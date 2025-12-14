@@ -1,0 +1,48 @@
+/* ====== APlayer 暗黑模式强制适配 ====== */
+[data-theme="dark"] .aplayer {
+    background: #282828 !important; /* 播放器主背景变深灰 */
+    color: #e0e0e0 !important;      /* 文字变灰白 */
+    box-shadow: none !important;    /* 去掉阴影 */
+    border: none !important;        /* 去掉边框 */
+}
+
+/* 歌名颜色 */
+[data-theme="dark"] .aplayer .aplayer-info .aplayer-music .aplayer-title {
+    color: #fff !important;
+}
+
+/* 歌手名颜色 */
+[data-theme="dark"] .aplayer .aplayer-info .aplayer-music .aplayer-author {
+    color: #999 !important;
+}
+
+/* 播放列表区域背景 */
+[data-theme="dark"] .aplayer .aplayer-list {
+    background-color: #282828 !important;
+    border-color: transparent !important;
+}
+
+/* 播放列表文字颜色 */
+[data-theme="dark"] .aplayer .aplayer-list ol li {
+    border-top: 1px solid #333 !important;
+}
+[data-theme="dark"] .aplayer .aplayer-list ol li:hover {
+    background: #333 !important; /* 鼠标悬停时的背景色 */
+}
+[data-theme="dark"] .aplayer .aplayer-list ol li.aplayer-list-light {
+    background: #333 !important; /* 当前正在播放歌曲的高亮背景 */
+}
+
+/* 列表中的歌名和歌手 */
+[data-theme="dark"] .aplayer .aplayer-list ol li .aplayer-list-title {
+    color: #ccc !important;
+}
+[data-theme="dark"] .aplayer .aplayer-list ol li .aplayer-list-author {
+    color: #666 !important;
+}
+
+/* 歌词区域 */
+[data-theme="dark"] .aplayer .aplayer-lrc:before,
+[data-theme="dark"] .aplayer .aplayer-lrc:after {
+    background: linear-gradient(180deg, #282828 0, rgba(40,40,40,0)) !important; /* 歌词渐变遮罩修正 */
+}
