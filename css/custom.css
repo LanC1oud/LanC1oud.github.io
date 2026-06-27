@@ -1,6 +1,6 @@
-/* 文章卡片渐变背景 - 淡青蓝绿 */
+/* 文章卡片渐变背景 - 青蓝绿（贴合背景图色调） */
 #recent-posts .recent-post-item {
-  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #a7f3d0 100%) !important;
+  background: linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 50%, #ccfbf1 100%) !important;
   position: relative;
   overflow: hidden;
 }
@@ -24,7 +24,7 @@
 
 /* 侧栏卡片渐变背景 */
 #aside-content .card-widget {
-  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #a7f3d0 100%) !important;
+  background: linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 50%, #ccfbf1 100%) !important;
   position: relative;
   overflow: hidden;
 }
