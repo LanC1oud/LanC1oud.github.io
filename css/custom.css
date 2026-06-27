@@ -1,6 +1,6 @@
-/* 无封面图的文章卡片渐变背景 */
+/* 无封面图的文章卡片渐变背景 - 柔和灰蓝紫 */
 #recent-posts .recent-post-item {
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+  background: linear-gradient(135deg, #e0e7ff 0%, #d1d5ff 50%, #c7b8ff 100%) !important;
   position: relative;
   overflow: hidden;
 }
@@ -13,7 +13,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.45) 0%, transparent 50%);
+  background: radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.5) 0%, transparent 55%);
   pointer-events: none;
   z-index: 0;
 }
@@ -24,11 +24,11 @@
   z-index: 1;
 }
 
-/* 暗色模式 */
+/* 暗色模式 - 深蓝灰 */
 [data-theme="dark"] #recent-posts .recent-post-item {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
 }
 
 [data-theme="dark"] #recent-posts .recent-post-item::before {
-  background: radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.06) 0%, transparent 50%);
+  background: radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.08) 0%, transparent 55%);
 }
