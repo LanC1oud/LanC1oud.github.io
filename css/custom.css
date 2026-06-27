@@ -1,48 +1,31 @@
-/* ====== APlayer 暗黑模式强制适配 ====== */
-[data-theme="dark"] .aplayer {
-    background: #282828 !important; /* 播放器主背景变深灰 */
-    color: #e0e0e0 !important;      /* 文字变灰白 */
-    box-shadow: none !important;    /* 去掉阴影 */
-    border: none !important;        /* 去掉边框 */
+/* 文章封面渐变背景 - 亮色模式 */
+.recent-post-item .post-bg,
+.recent-post-item .post-cover {
+  background: linear-gradient(135deg, #e0e7ff 0%, #d1d5ff 50%, #c7b8ff 100%) !important;
+  position: relative;
+  overflow: hidden;
 }
 
-/* 歌名颜色 */
-[data-theme="dark"] .aplayer .aplayer-info .aplayer-music .aplayer-title {
-    color: #fff !important;
+/* 加一层光泽感 */
+.recent-post-item .post-bg::before,
+.recent-post-item .post-cover::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35) 0%, transparent 60%);
+  pointer-events: none;
 }
 
-/* 歌手名颜色 */
-[data-theme="dark"] .aplayer .aplayer-info .aplayer-music .aplayer-author {
-    color: #999 !important;
+/* 暗色模式下的渐变 */
+[data-theme="dark"] .recent-post-item .post-bg,
+[data-theme="dark"] .recent-post-item .post-cover {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%) !important;
 }
 
-/* 播放列表区域背景 */
-[data-theme="dark"] .aplayer .aplayer-list {
-    background-color: #282828 !important;
-    border-color: transparent !important;
-}
-
-/* 播放列表文字颜色 */
-[data-theme="dark"] .aplayer .aplayer-list ol li {
-    border-top: 1px solid #333 !important;
-}
-[data-theme="dark"] .aplayer .aplayer-list ol li:hover {
-    background: #333 !important; /* 鼠标悬停时的背景色 */
-}
-[data-theme="dark"] .aplayer .aplayer-list ol li.aplayer-list-light {
-    background: #333 !important; /* 当前正在播放歌曲的高亮背景 */
-}
-
-/* 列表中的歌名和歌手 */
-[data-theme="dark"] .aplayer .aplayer-list ol li .aplayer-list-title {
-    color: #ccc !important;
-}
-[data-theme="dark"] .aplayer .aplayer-list ol li .aplayer-list-author {
-    color: #666 !important;
-}
-
-/* 歌词区域 */
-[data-theme="dark"] .aplayer .aplayer-lrc:before,
-[data-theme="dark"] .aplayer .aplayer-lrc:after {
-    background: linear-gradient(180deg, #282828 0, rgba(40,40,40,0)) !important; /* 歌词渐变遮罩修正 */
+[data-theme="dark"] .recent-post-item .post-bg::before,
+[data-theme="dark"] .recent-post-item .post-cover::before {
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08) 0%, transparent 60%);
 }
