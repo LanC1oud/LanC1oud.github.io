@@ -1,31 +1,34 @@
-/* 文章封面渐变背景 - 亮色模式 */
-.recent-post-item .post-bg,
-.recent-post-item .post-cover {
-  background: linear-gradient(135deg, #e0e7ff 0%, #d1d5ff 50%, #c7b8ff 100%) !important;
+/* 无封面图的文章卡片渐变背景 */
+.recent-post-item {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   position: relative;
   overflow: hidden;
 }
 
-/* 加一层光泽感 */
-.recent-post-item .post-bg::before,
-.recent-post-item .post-cover::before {
+/* 光泽感 overlay */
+.recent-post-item::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35) 0%, transparent 60%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.45) 0%, transparent 50%);
   pointer-events: none;
+  z-index: 0;
 }
 
-/* 暗色模式下的渐变 */
-[data-theme="dark"] .recent-post-item .post-bg,
-[data-theme="dark"] .recent-post-item .post-cover {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%) !important;
+/* 让卡片内容在 overlay 之上 */
+.recent-post-item > * {
+  position: relative;
+  z-index: 1;
 }
 
-[data-theme="dark"] .recent-post-item .post-bg::before,
-[data-theme="dark"] .recent-post-item .post-cover::before {
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08) 0%, transparent 60%);
+/* 暗色模式 */
+[data-theme="dark"] .recent-post-item {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+[data-theme="dark"] .recent-post-item::before {
+  background: radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.06) 0%, transparent 50%);
 }
