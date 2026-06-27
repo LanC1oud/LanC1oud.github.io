@@ -1,6 +1,6 @@
-/* 文章卡片渐变背景 - 淡青蓝 */
+/* 文章卡片渐变背景 - 淡青蓝绿 */
 #recent-posts .recent-post-item {
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%) !important;
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #a7f3d0 100%) !important;
   position: relative;
   overflow: hidden;
 }
@@ -24,7 +24,7 @@
 
 /* 侧栏卡片渐变背景 */
 #aside-content .card-widget {
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%) !important;
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #a7f3d0 100%) !important;
   position: relative;
   overflow: hidden;
 }
@@ -46,18 +46,18 @@
   z-index: 1;
 }
 
-/* 暗色模式 - 文章卡片 */
+/* 暗色模式 - 文章卡片（深蓝黑光泽） */
 [data-theme="dark"] #recent-posts .recent-post-item {
-  background: linear-gradient(135deg, #0c4a6e 0%, #075985 50%, #0369a1 100%) !important;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
 }
 
 [data-theme="dark"] #recent-posts .recent-post-item::before {
   background: radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.08) 0%, transparent 55%);
 }
 
-/* 暗色模式 - 侧栏卡片 */
+/* 暗色模式 - 侧栏卡片（深蓝黑光泽） */
 [data-theme="dark"] #aside-content .card-widget {
-  background: linear-gradient(135deg, #0c4a6e 0%, #075985 50%, #0369a1 100%) !important;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
 }
 
 [data-theme="dark"] #aside-content .card-widget::before {
