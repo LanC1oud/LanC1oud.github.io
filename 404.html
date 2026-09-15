@@ -173,7 +173,55 @@
   }
 
   showKatex()
-})()</script></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="false"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>(() => {
+})()</script></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  // APlayer/Meting can be rendered both by the sidebar widget and by
+  // post content. Never let either variant opt into browser autoplay:
+  // browsers reject unmuted autoplay and PJAX would retry it on every
+  // navigation. Removing the boolean attribute is important because an
+  // HTML boolean attribute is truthy even when written as autoplay="false".
+  const disableAutoplay = () => {
+    document.querySelectorAll('meting-js').forEach(element => {
+      element.removeAttribute('autoplay')
+      element.removeAttribute('data-autoplay')
+    })
+
+    document.querySelectorAll('.aplayer').forEach(element => {
+      element.removeAttribute('data-autoplay')
+      const audio = element.querySelector('audio')
+      if (audio) audio.removeAttribute('autoplay')
+    })
+
+    document.querySelectorAll('audio[autoplay]').forEach(audio => {
+      audio.removeAttribute('autoplay')
+    })
+  }
+
+  const runMetingJS = () => {
+    disableAutoplay()
+    if (typeof loadMeting === 'function' && document.querySelector('meting-js, .aplayer')) {
+      loadMeting()
+      // Meting may create the audio element synchronously. Apply the
+      // guard once more so generated markup cannot re-enable autoplay.
+      disableAutoplay()
+    }
+  }
+
+  // Guard the initial page before Meting's DOMContentLoaded handler runs.
+  disableAutoplay()
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', runMetingJS, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>(() => {
   const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
   window.pjax = new Pjax({
