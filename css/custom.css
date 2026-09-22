@@ -1,15 +1,3 @@
-/* ===================================================================
-   站点级自定义样式（site-custom.css）
-   -------------------------------------------------------------------
-   由 themes/butterfly/source/css/custom.css 与
-      source/css/custom.css 合并而来。
-   注意：故意不叫 custom.css —— 主题内自带 source/css/custom.css，
-   Hexo 会用站点同名文件静默覆盖主题文件，改名可避免这种隐式覆盖。
-   引用位置：_config.butterfly.yml -> inject.head
-   =================================================================== */
-
-/* ---------- 一、卡片 / 侧栏 / 正文 渐变背景（青蓝绿） ---------- */
-
 /* 文章卡片渐变背景 - 青蓝绿（贴合背景图色调） */
 #recent-posts .recent-post-item {
   background: linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 50%, #ccfbf1 100%) !important;
@@ -82,7 +70,6 @@
   z-index: 1;
 }
 
-/* ---------- 二、暗色模式（深蓝黑光泽） ---------- */
 
 /* 暗色模式 - 文章卡片 */
 [data-theme="dark"] #recent-posts .recent-post-item {
