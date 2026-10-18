@@ -75,3 +75,81 @@ body:has(.post-list.post)>.site-background .site-background__blur {
   -webkit-backdrop-filter: saturate(100%) blur(16px);
   backdrop-filter: saturate(100%) blur(16px);
 }
+
+/* ===========================================================================
+   友链页：每个友链一个横排卡片，每行两个
+   ---------------------------------------------------------------------------
+   主题默认是「竖排小方块 + minmax(80px,1fr) 自动铺满」，一行会排很多个。
+   这里改成固定两列 + 横向卡片（左头像、右名称），并加左侧色条与悬停浮起。
+   =========================================================================== */
+.users-wrap .grid-box {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.users-wrap .user-card .card-link {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  gap: 14px;
+  padding: 16px 18px 16px 22px;
+  border-radius: 16px;
+  font-size: 1rem;
+  background: var(--bg-a50);
+  -webkit-backdrop-filter: saturate(100%) blur(16px);
+  backdrop-filter: saturate(100%) blur(16px);
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+/* 左侧强调色条 */
+.users-wrap .user-card .card-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--theme);
+}
+
+/* 头像：方形圆角 */
+.users-wrap .user-card .card-link .lazy-box {
+  margin: 0;
+  border-radius: 12px;
+  corner-shape: round;
+  flex: none;
+  width: 56px;
+  height: 56px;
+}
+
+.users-wrap .user-card .card-link img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* 站点名称 */
+.users-wrap .user-card .card-link .name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 0;
+}
+
+/* 悬停 */
+.users-wrap .user-card .card-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .10);
+  background: var(--bg-a60);
+}
+
+/* 窄屏改为单列，避免卡片被压扁 */
+@media screen and (max-width: 768px) {
+  .users-wrap .grid-box {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

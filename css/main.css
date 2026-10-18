@@ -12157,8 +12157,8 @@ body > .site-background .site-background__blur {
   --blur-sat: 200%;
   background-color: var(--blur-bg);
   --blur-sat: 70%;
-  --blur-px: 40px;
-  --blur-bg: var(--bg-a65);
+  --blur-px: 60px;
+  --blur-bg: var(--bg-a50);
 }
 @supports ((-webkit-backdrop-filter: blur(var(--blur-px))) or (backdrop-filter: blur(var(--blur-px)))) {
   body > .site-background .site-background__blur {
