@@ -1,183 +1,447 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>C语言系统级编程 | 炊煙雲海。</title><meta name="author" content="LanC1oud"><meta name="copyright" content="LanC1oud"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="学习这门课是C语言学习者最幸运的一天，因为他们终于能找到对象了。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="C语言系统级编程">
-<meta property="og:url" content="http://lanc1oud.top/posts/47e0d445.html">
-<meta property="og:site_name" content="炊煙雲海。">
-<meta property="og:description" content="学习这门课是C语言学习者最幸运的一天，因为他们终于能找到对象了。">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://lanc1oud.top/img/xiawula.png">
-<meta property="article:published_time" content="2026-09-15T16:34:54.000Z">
-<meta property="article:modified_time" content="2026-10-18T12:19:22.133Z">
-<meta property="article:author" content="LanC1oud">
-<meta property="article:tag" content="C&#x2F;C++">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://lanc1oud.top/img/xiawula.png"><script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "C语言系统级编程",
-  "url": "http://lanc1oud.top/posts/47e0d445.html",
-  "image": "http://lanc1oud.top/img/xiawula.png",
-  "datePublished": "2026-09-15T16:34:54.000Z",
-  "dateModified": "2026-10-18T12:19:22.133Z",
-  "author": [
-    {
-      "@type": "Person",
-      "name": "LanC1oud",
-      "url": "http://lanc1oud.top"
-    }
-  ]
-}</script><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="http://lanc1oud.top/posts/47e0d445.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.3-b2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
-    (() => {
-      
-    const saveToLocal = {
-      set: (key, value, ttl) => {
-        if (!ttl) return
-        const expiry = Date.now() + ttl * 86400000
-        localStorage.setItem(key, JSON.stringify({ value, expiry }))
-      },
-      get: key => {
-        const itemStr = localStorage.getItem(key)
-        if (!itemStr) return undefined
-        const { value, expiry } = JSON.parse(itemStr)
-        if (Date.now() > expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return value
-      }
-    }
-
-    window.btf = {
-      saveToLocal,
-      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
-        script.onload = script.onreadystatechange = () => {
-          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
-        }
-        script.onerror = reject
-        document.head.appendChild(script)
-      }),
-      getCSS: (url, id) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onload = link.onreadystatechange = () => {
-          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
-        }
-        link.onerror = reject
-        document.head.appendChild(link)
-      }),
-      addGlobalFn: (key, fn, name = false, parent = window) => {
-        if (!true && key.startsWith('pjax')) return
-        const globalFn = parent.globalFn || {}
-        globalFn[key] = globalFn[key] || {}
-        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
-        parent.globalFn = globalFn
-      }
-    }
+<!DOCTYPE html><html lang="zh-CN"><head>
   
-      
-      const activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/2.0.0" theme-name="Stellar" theme-version="2.0.0">
+  
+  
+  <meta name="generator" content="Hexo 8.1.1">
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title data-stellar-page-meta="">C语言系统级编程 - 炊煙雲海。</title>
+  <script data-stellar-script="core">
+    (function () {
+      var key = 'stellar:v2:leftbar-state';
+      var fallback = "expanded";
+      try {
+        var value = localStorage.getItem(key);
+        document.documentElement.dataset.leftbarState = value === 'collapsed' || value === 'expanded' ? value : fallback;
+      } catch (error) {
+        document.documentElement.dataset.leftbarState = fallback;
       }
-      const activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
+    })();
+  </script>
 
-      btf.activateDarkMode = activateDarkMode
-      btf.activateLightMode = activateLightMode
+  <meta name="description" content="学习这门课是C语言学习者最幸运的一天，因为他们终于能找到对象了。" data-stellar-page-meta="">
+<meta property="og:type" content="article" data-stellar-page-meta="">
+<meta property="og:title" content="C语言系统级编程" data-stellar-page-meta="">
+<meta property="og:url" content="http://lanc1oud.top/posts/47e0d445" data-stellar-page-meta="">
+<meta property="og:site_name" content="炊煙雲海。" data-stellar-page-meta="">
+<meta property="og:description" content="学习这门课是C语言学习者最幸运的一天，因为他们终于能找到对象了。" data-stellar-page-meta="">
+<meta property="og:locale" content="zh_CN" data-stellar-page-meta="">
+<meta property="article:author" content="LanC1oud" data-stellar-page-meta="">
+<meta property="article:published_time" content="2026-09-15T16:34:54.000Z" data-stellar-page-meta="">
+<meta property="article:modified_time" content="2026-10-18T12:19:22.000Z" data-stellar-page-meta="">
+<meta property="article:tag" content="C/C++" data-stellar-page-meta="">
+<meta name="twitter:card" content="summary" data-stellar-page-meta=""><meta name="twitter:title" content="C语言系统级编程" data-stellar-page-meta="">
+  
+  
+  <meta name="keywords" content="C/C++" data-stellar-page-meta="">
 
-      const theme = saveToLocal.get('theme')
+  <!-- feed -->
+  
+
+  <link rel="preload" href="/css/main.css?v=2.0.0" as="style">
+  <link rel="stylesheet" href="/css/main.css?v=2.0.0">
+  <style>:root{--text-loading:"正在加载";--text-loading-error:"加载失败，请稍后重试。"}</style>
+
+
+  
+
+  
+
+  <script type="application/ld+json" data-stellar-page-meta="">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"LanC1oud","sameAs":[]},"dateCreated":"2026-09-16T00:34:54+08:00","dateModified":"2026-10-18T20:19:22+08:00","datePublished":"2026-09-16T00:34:54+08:00","description":"Week 1\nC语言中的对象\n一个对象一般有一个对象类型，标记为Type-name。\n完全对象类型：大小可知，分配后大小确定。\n不完全对象类型：大小未知，分配后大小也确定。\n所有对象类型在语义上都是整体的，对象类型在语法上不一定是整体的，如果一个Type-name在语法上整体，标记为T。\n对象各个bit组成的二进制串是这个对象的对象表示（Object Representation），对象的值...","headline":"C语言系统级编程","mainEntityOfPage":{"@type":"WebPage","@id":"http://lanc1oud.top/posts/47e0d445"},"publisher":{"@type":"Organization","name":"LanC1oud","sameAs":[]},"url":"http://lanc1oud.top/posts/47e0d445","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"],"keywords":"C/C++","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"}</script>
+  
+
+  <link rel="stylesheet" href="/css/stellar-icons.css?v=7c185ad1a9a79674">
+  <link rel="preload" as="script" href="/js/stellar-icons.js?v=39c6ac17e854ffe2">
+  
+  
+</head>
+<body data-page-type="content" data-page-layout="post" data-article-style="tech"><div data-stellar-runtime-region="" id="site-cover" class="site-cover"></div><div class="site-shell" id="start" data-regions="leftbar rightbar"><div class="site-workspace">
+<aside data-stellar-runtime-region="" id="leftbar-region" class="site-region site-region--leftbar" data-region="leftbar" aria-label="Leftbar"><div class="site-region__surface ui-surface"><div class="site-region__decoration" aria-hidden="true"></div><div class="site-region__viewport"><header class="site-region__header site-region__zone site-region__zone--top">
     
-          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
-          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+  </header>
+  <div class="site-region__body site-region__zone site-region__zone--body">
+    <div class="widget-instance widget-instance--menu" data-widget-id="leftbar:fixed:menu" data-presentation="leftbar" data-leftbar-rail="">
 
-          if (theme === undefined) {
-            if (mediaQueryLight.matches) activateLightMode()
-            else if (mediaQueryDark.matches) activateDarkMode()
-            else {
-              const hour = new Date().getHours()
-              const isNight = hour <= 6 || hour >= 18
-              isNight ? activateDarkMode() : activateLightMode()
-            }
-            mediaQueryDark.addEventListener('change', () => {
-              if (saveToLocal.get('theme') === undefined) {
-                e.matches ? activateDarkMode() : activateLightMode()
-              }
-            })
-          } else {
-            theme === 'light' ? activateLightMode() : activateDarkMode()
-          }
+
+<nav class="menu dis-select">
+<div class="ui-collection" data-layout="list" data-variant="nav" data-density="auto">
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight is-active" href="/" title="博客" aria-current="page">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"></path><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"></path></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">博客</span>
+      
+      
+    </span>
+  
+  
+  <span class="ui-collection__indicator"></span>
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/blog/categories/" title="分类">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="currentColor"><path d="M2 6.94975C2 6.06722 2 5.62595 2.06935 5.25839C2.37464 3.64031 3.64031 2.37464 5.25839 2.06935C5.62595 2 6.06722 2 6.94975 2C7.33642 2 7.52976 2 7.71557 2.01738C8.51665 2.09229 9.27652 2.40704 9.89594 2.92051C10.0396 3.03961 10.1763 3.17633 10.4497 3.44975L11 4C11.8158 4.81578 12.2237 5.22367 12.7121 5.49543C12.9804 5.64471 13.2651 5.7626 13.5604 5.84678C14.0979 6 14.6747 6 15.8284 6H16.2021C18.8345 6 20.1506 6 21.0062 6.76946C21.0849 6.84024 21.1598 6.91514 21.2305 6.99383C22 7.84935 22 9.16554 22 11.7979V14C22 17.7712 22 19.6569 20.8284 20.8284C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V6.94975Z" opacity=".5"></path><path d="M20 6.23751C19.9992 5.94016 19.9949 5.76263 19.9746 5.60842C19.7974 4.26222 18.7381 3.2029 17.3919 3.02567C17.1969 3 16.9647 3 16.5003 3H9.98828C10.1042 3.10392 10.2347 3.23445 10.45 3.44975L11.0003 4C11.8161 4.81578 12.2239 5.22367 12.7124 5.49543C12.9807 5.64471 13.2653 5.7626 13.5606 5.84678C14.0982 6 14.675 6 15.8287 6H16.2024C17.9814 6 19.1593 6 20 6.23751Z"></path><path fill-rule="evenodd" d="M12.25 10C12.25 9.58579 12.5858 9.25 13 9.25H18C18.4142 9.25 18.75 9.58579 18.75 10C18.75 10.4142 18.4142 10.75 18 10.75H13C12.5858 10.75 12.25 10.4142 12.25 10Z" clip-rule="evenodd"></path></g></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">分类</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/blog/tags/" title="标签">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" fill-rule="evenodd" d="M10.7226 3.20068C10.8335 2.80158 10.5998 2.38817 10.2007 2.27731C9.80163 2.16645 9.38822 2.40011 9.27736 2.79921L7.76327 8.24995H4C3.58579 8.24995 3.25 8.58573 3.25 8.99995C3.25 9.41416 3.58579 9.74995 4 9.74995H7.3466L5.81882 15.2499H2C1.58579 15.2499 1.25 15.5857 1.25 15.9999C1.25 16.4142 1.58579 16.7499 2 16.7499H5.40216L4.27736 20.7992C4.1665 21.1983 4.40016 21.6117 4.79927 21.7226C5.19837 21.8334 5.61178 21.5998 5.72264 21.2007L6.95895 16.7499H14.4022L13.2774 20.7992C13.1665 21.1983 13.4002 21.6117 13.7993 21.7226C14.1984 21.8334 14.6118 21.5998 14.7226 21.2007L15.959 16.7499H20C20.4142 16.7499 20.75 16.4142 20.75 15.9999C20.75 15.5857 20.4142 15.2499 20 15.2499H16.3756L17.9034 9.74995H22C22.4142 9.74995 22.75 9.41416 22.75 8.99995C22.75 8.58573 22.4142 8.24995 22 8.24995H18.3201L19.7226 3.20068C19.8335 2.80158 19.5998 2.38817 19.2007 2.27731C18.8016 2.16645 18.3882 2.40011 18.2774 2.79921L16.7633 8.24995H9.32006L10.7226 3.20068ZM14.8188 15.2499L16.3466 9.74995H8.9034L7.37562 15.2499H14.8188Z" clip-rule="evenodd"></path></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">标签</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/topic/" title="专栏">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" d="m12 16.068l-3.771 3.905c-.54.559-.81.839-1.04.935c-.52.22-1.099.032-1.373-.448c-.12-.21-.158-.59-.232-1.35c-.043-.43-.064-.644-.128-.824a1.43 1.43 0 0 0-.835-.864c-.173-.067-.38-.089-.795-.133c-.734-.077-1.101-.116-1.305-.24c-.463-.284-.646-.883-.433-1.422c.094-.237.364-.517.904-1.076L5.456 12l1.238-1.238zl5.306-5.306L18.544 12l2.464 2.55c.54.56.81.84.904 1.076c.213.54.03 1.139-.433 1.423c-.204.124-.57.163-1.305.24c-.414.044-.622.066-.795.133c-.389.149-.69.462-.835.864c-.064.18-.085.394-.128.823c-.075.76-.112 1.14-.232 1.351c-.274.48-.853.669-1.374.448c-.228-.096-.498-.376-1.038-.935z" opacity=".5"></path><path fill="currentColor" fill-rule="evenodd" d="M12 16a7 7 0 1 0 0-14a7 7 0 0 0 0 14m0-10c-.284 0-.474.34-.854 1.023l-.098.176c-.108.194-.162.29-.246.354c-.085.064-.19.088-.4.135l-.19.044c-.738.167-1.107.25-1.195.532s.164.577.667 1.165l.13.152c.143.167.215.25.247.354s.021.215 0 .438l-.02.203c-.076.785-.114 1.178.115 1.352c.23.174.576.015 1.267-.303l.178-.082c.197-.09.295-.135.399-.135s.202.045.399.135l.178.082c.691.319 1.037.477 1.267.303s.191-.567.115-1.352l-.02-.203c-.021-.223-.032-.334 0-.438s.104-.187.247-.354l.13-.152c.503-.588.755-.882.667-1.165c-.088-.282-.457-.365-1.195-.532l-.19-.044c-.21-.047-.315-.07-.4-.135c-.084-.064-.138-.16-.246-.354l-.098-.176C12.474 6.34 12.284 6 12 6" clip-rule="evenodd"></path></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">专栏</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/blog/archives/" title="归档">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="currentColor"><path d="M6.94028 2C7.35614 2 7.69326 2.32421 7.69326 2.72414V4.18487C8.36117 4.17241 9.10983 4.17241 9.95219 4.17241H13.9681C14.8104 4.17241 15.5591 4.17241 16.227 4.18487V2.72414C16.227 2.32421 16.5641 2 16.98 2C17.3958 2 17.733 2.32421 17.733 2.72414V4.24894C19.178 4.36022 20.1267 4.63333 20.8236 5.30359C21.5206 5.97385 21.8046 6.88616 21.9203 8.27586L22 9H2.92456H2V8.27586C2.11571 6.88616 2.3997 5.97385 3.09665 5.30359C3.79361 4.63333 4.74226 4.36022 6.1873 4.24894V2.72414C6.1873 2.32421 6.52442 2 6.94028 2Z"></path><path d="M21.9995 14.0001V12.0001C21.9995 11.161 21.9963 9.66527 21.9834 9H2.00917C1.99626 9.66527 1.99953 11.161 1.99953 12.0001V14.0001C1.99953 17.7713 1.99953 19.6569 3.1711 20.8285C4.34267 22.0001 6.22829 22.0001 9.99953 22.0001H13.9995C17.7708 22.0001 19.6564 22.0001 20.828 20.8285C21.9995 19.6569 21.9995 17.7713 21.9995 14.0001Z" opacity=".5"></path><path d="M18 17C18 17.5523 17.5523 18 17 18C16.4477 18 16 17.5523 16 17C16 16.4477 16.4477 16 17 16C17.5523 16 18 16.4477 18 17Z"></path><path d="M18 13C18 13.5523 17.5523 14 17 14C16.4477 14 16 13.5523 16 13C16 12.4477 16.4477 12 17 12C17.5523 12 18 12.4477 18 13Z"></path><path d="M13 17C13 17.5523 12.5523 18 12 18C11.4477 18 11 17.5523 11 17C11 16.4477 11.4477 16 12 16C12.5523 16 13 16.4477 13 17Z"></path><path d="M13 13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13C11 12.4477 11.4477 12 12 12C12.5523 12 13 12.4477 13 13Z"></path><path d="M8 17C8 17.5523 7.55228 18 7 18C6.44772 18 6 17.5523 6 17C6 16.4477 6.44772 16 7 16C7.55228 16 8 16.4477 8 17Z"></path><path d="M8 13C8 13.5523 7.55228 14 7 14C6.44772 14 6 13.5523 6 13C6 12.4477 6.44772 12 7 12C7.55228 12 8 12.4477 8 13Z"></path></g></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">归档</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/friends/" title="友链">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">友链</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/about/" title="关于">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20a10 10 0 0 0 0-20" opacity=".5"></path><path d="M12 6a3 3 0 1 0 0 6a3 3 0 0 0 0-6m0 7.5c-3.04 0-5.5 1.57-5.5 3.5c0 .65.28 1.26.77 1.77A7.96 7.96 0 0 0 12 20.5a7.96 7.96 0 0 0 4.73-1.73c.49-.51.77-1.12.77-1.77c0-1.93-2.46-3.5-5.5-3.5"></path></g></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">关于</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+</div>
+
+</nav>
+
+</div>
+    <div class="widgets widget-stack widget-stack--leftbar widget-stack--body"><div class="widget-instance widget-instance--recent" data-widget-id="leftbar:1:recent" data-presentation="leftbar">
+
+<widget class="widget-wrapper slide-up recent-widget">
+  
+    <div class="widget-header dis-select">
+      <span class="name">最近更新</span>
+      
+    </div>
+  
+  <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/posts/ba8b2c52/" title="OS Lab0 学习记录">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">O</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">OS Lab0 学习记录</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/posts/782494a0/" title="BUAA-CO P7设计文档">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">B</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">BUAA-CO P7设计文档</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/posts/a5b24d25/" title="BUAA-CO P6设计文档">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">B</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">BUAA-CO P6设计文档</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/posts/187821eb/" title="BUAA-CO P5设计文档">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">B</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">BUAA-CO P5设计文档</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/posts/c5eef86e/" title="BUAA-CO P4设计文档">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">B</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">BUAA-CO P4设计文档</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/posts/b89dfe36/" title="BUAA-CO P3设计文档">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">B</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">BUAA-CO P3设计文档</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/posts/47e0d445/" title="C语言系统级编程">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">C</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">C语言系统级编程</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/posts/f80d473d/" title="[炽吾生平]初雪记">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">[</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">[炽吾生平]初雪记</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/posts/531b2dcd/" title="MySQL简单教程">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">M</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">MySQL简单教程</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/posts/288c757f/" title="BUAA-ML 2025-2026春季试题回忆版">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">B</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">BUAA-ML 2025-2026春季试题回忆版</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+</div></div>
+  
+</widget>
+
+
+</div></div>
+  </div>
+  <footer class="site-region__footer">
+    
+    <div class="site-region__system ui-collection" data-layout="inline" data-variant="nav" data-density="compact">
+      <div class="site-region__settings"><div class="widget-instance widget-instance--settings" data-widget-id="leftbar:fixed:settings" data-presentation="leftbar" data-leftbar-rail="">
+<a class="settings-widget ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/settings/" data-profile-provider="" data-profile-identity-enabled="false" data-profile-fallback-avatar="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg" data-settings-placement="leftbar" data-settings-label="设置" aria-label="设置" title="设置">
+  <span class="settings-widget__avatar" aria-hidden="true">
+    <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><path fill-rule="evenodd" d="M12.4277 2C11.3139 2 10.2995 2.6007 8.27081 3.80211L7.58466 4.20846C5.55594 5.40987 4.54158 6.01057 3.98466 7C3.42773 7.98943 3.42773 9.19084 3.42773 11.5937V12.4063C3.42773 14.8092 3.42773 16.0106 3.98466 17C4.54158 17.9894 5.55594 18.5901 7.58466 19.7915L8.27081 20.1979C10.2995 21.3993 11.3139 22 12.4277 22C13.5416 22 14.5559 21.3993 16.5847 20.1979L17.2708 19.7915C19.2995 18.5901 20.3139 17.9894 20.8708 17C21.4277 16.0106 21.4277 14.8092 21.4277 12.4063V11.5937C21.4277 9.19084 21.4277 7.98943 20.8708 7C20.3139 6.01057 19.2995 5.40987 17.2708 4.20846L16.5847 3.80211C14.5559 2.6007 13.5416 2 12.4277 2Z" clip-rule="evenodd" opacity=".5"></path><path d="M12.4277 8.25C10.3567 8.25 8.67773 9.92893 8.67773 12C8.67773 14.0711 10.3567 15.75 12.4277 15.75C14.4988 15.75 16.1777 14.0711 16.1777 12C16.1777 9.92893 14.4988 8.25 12.4277 8.25Z"></path></g></svg></span>
+  </span>
+  <span class="settings-widget__name ui-collection__title">设置</span>
+</a>
+</div></div>
+      <button type="button" class="leftbar-state-toggle ui-collection__item ui-interactive card-hover card-hover--spotlight is-icon-only" aria-label="Collapse leftbar" aria-expanded="true" data-shell-action="toggle-leftbar"><span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.172 4.172C2 5.343 2 7.229 2 11v2c0 3.771 0 5.657 1.172 6.828S6.229 21 10 21h5V3h-5C6.229 3 4.343 3 3.172 4.172" clip-rule="evenodd" opacity=".5"></path><path fill="currentColor" d="M5.5 9.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zm1 4a.75.75 0 0 0 0 1.5h4a.75.75 0 0 0 0-1.5zM22 13v-2c0-3.771 0-5.657-1.172-6.828c-.974-.975-3.192-1.139-5.828-1.166v17.988c2.636-.027 4.854-.191 5.828-1.166C22 18.657 22 16.771 22 13"></path></svg></span></button>
+    </div>
+  </footer></div></div></aside>
+<main data-stellar-runtime-region="" class="site-main" id="main">
+
+
+<div class="article-banner-wrap slide-up"><div class="article banner top">
+  <div class="content">
+    
+    <div class="top bread-nav footnote"><div class="top-row"><div class="left" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a>
+</div></div><div class="meta-row">
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-09-15T16:34:54.000Z">2026-09-16</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-10-18T12:19:22.000Z">2026-10-18</time></span></div>
+</div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>C语言系统级编程</span></h1>
         
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
-      }
+      </div>
+    </div>
     
-      
-    const detectApple = () => {
-      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-  
-    })()
-  </script><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: undefined,
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300,"highlightFullpage":false,"highlightMacStyle":true},
-  copy: {
-    success: '复制成功',
-    error: '复制失败',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'null',
-  Snackbar: undefined,
-  infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
-    buttonText: '加载更多'
-  },
-  isPhotoFigcaption: false,
-  islazyloadPlugin: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: false,
-  },
-  autoDarkmode: true
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'C语言系统级编程',
-  isHighlightShrink: false,
-  isToc: true,
-  pageType: 'post'
-}</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 8.1.1"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/background.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/xiawula.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: transparent;"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">炊煙雲海。</span></a><a class="nav-page-title" href="/"><span class="site-name">C语言系统级编程</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">C语言系统级编程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-09-15T16:34:54.000Z" title="发表于 2026-09-16 00:34:54">2026-09-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-10-18T12:19:22.133Z" title="更新于 2026-10-18 20:19:22">2026-10-18</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">7.4k</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="Week-1">Week 1</h2>
+  </div>
+  </div></div>
+<article class="md-text content slide-up"><h2 id="Week-1">Week 1</h2>
 <h3 id="C语言中的对象">C语言中的对象</h3>
 <p>一个对象一般有一个对象类型，标记为<strong>Type-name</strong>。</p>
 <p>完全对象类型：大小可知，分配后大小确定。<br>
@@ -225,7 +489,7 @@
 <li>Q T[N]：数组类型，N个Q T；T[N] Q：不合法</li>
 <li>Q T*：指针类型，referenced type是Q T；T* Q：Q限定T*类型</li>
 </ul>
-<table>
+<div class="md-table-scroll"><table>
 <thead>
 <tr>
 <th>限定类型形式</th>
@@ -254,7 +518,7 @@
 <td>T<em>QQ’ / T</em>Q’Q</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
 <p>例：<code>const int*(* const*)[4][5]</code>?<br>
 例：<code>const int* const</code>?</p>
@@ -299,9 +563,9 @@
 </ul>
 <blockquote>
 <p>例：<br>
-<code>int a[2][3] = &#123;&#123;1,2&#125;,&#123;3,4,5&#125;&#125;</code> &lt;==&gt; <code>&#123;&#123;1,2,0&#125;,&#123;3,4,5&#125;&#125;</code><br>
-<code>int a[2][3] = &#123;1,2,3,4&#125;</code> &lt;==&gt; <code>&#123;&#123;1,2,3&#125;,&#123;4,0,0&#125;&#125;</code><br>
-<code>int a[10] = &#123;[3] = 5&#125;</code>（Designated Initializer）</p>
+<code>int a[2][3] = {{1,2},{3,4,5}}</code> &lt;==&gt; <code>{{1,2,0},{3,4,5}}</code><br>
+<code>int a[2][3] = {1,2,3,4}</code> &lt;==&gt; <code>{{1,2,3},{4,0,0}}</code><br>
+<code>int a[10] = {[3] = 5}</code>（Designated Initializer）</p>
 </blockquote>
 <p>无Initializer时（如<code>int a;</code>），a被称为indeterminate representation，但实际上这个值是<strong>确定的</strong>，不确定只是从程序员视角而言</p>
 <h4 id="对象六元组模型">对象六元组模型</h4>
@@ -314,16 +578,16 @@ Obj_value,<br>
 Alignment,<br>
 }</p>
 <blockquote>
-<p>例：<code>char b='a';``int* p;``int* p=NULL;``int c[2];``int c[2]=&#123;1,2&#125;``const int e[2][3]</code>的对象六元组？</p>
+<p>例：<code>char b='a';``int* p;``int* p=NULL;``int c[2];``int c[2]={1,2}``const int e[2][3]</code>的对象六元组？</p>
 </blockquote>
 <blockquote>
-<p>例：定义一个对象<code>int* f[2][3][4]=&#123;&#125;</code>,对象f的Object_Type是什么？这个数组对象的元素对象类型是什么？元素对象对应的指针类型是什么？<br>
+<p>例：定义一个对象<code>int* f[2][3][4]={}</code>,对象f的Object_Type是什么？这个数组对象的元素对象类型是什么？元素对象对应的指针类型是什么？<br>
 <code>int*[2][3][4]``int*[3][4]``int*(*)[3][4]</code></p>
 </blockquote>
 <h4 id="通过字符串字面量-String-Literal">通过字符串字面量(String Literal)</h4>
-<p>encoding-prefix&quot;s-char-sequence&quot;</p>
+<p>encoding-prefix"s-char-sequence"</p>
 <p>五种编码前缀：无编码、u8、u、U、L</p>
-<table>
+<div class="md-table-scroll"><table>
 <thead>
 <tr>
 <th style="text-align:center">编码前缀</th>
@@ -353,13 +617,13 @@ Alignment,<br>
 <td style="text-align:center">实现定义</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>四种对象存储周期：static,automatic,allocated,thread</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, char* argv[]) &#123;</span><br><span class="line">    &quot;hello&quot;;</span><br><span class="line">    &quot;hello&quot;;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//第一个“hello”会分配一个字符数组对象，第二个“hello”不确定</span><br><span class="line"></span><br><span class="line">int main(int argc, char* argv[]) &#123;</span><br><span class="line">    &quot;hello&quot;;</span><br><span class="line">    L&quot;hello&quot;;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//第一个“hello”对象类型是char[6]，第二个“hello”对象类型是wchar_t[6]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, char* argv[]) {</span><br><span class="line">    "hello";</span><br><span class="line">    "hello";</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">//第一个“hello”会分配一个字符数组对象，第二个“hello”不确定</span><br><span class="line"></span><br><span class="line">int main(int argc, char* argv[]) {</span><br><span class="line">    "hello";</span><br><span class="line">    L"hello";</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">//第一个“hello”对象类型是char[6]，第二个“hello”对象类型是wchar_t[6]</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <h4 id="通过复合字面量-Compound-Literal">通过复合字面量(Compound Literal)</h4>
 <p>(storage-class-specifiers type-name) Braced-Initializer</p>
 <blockquote>
-<p>例：<code>(int[])&#123;1,2&#125;</code></p>
+<p>例：<code>(int[]){1,2}</code></p>
 </blockquote>
 <h4 id="通过内存管理函数">通过内存管理函数</h4>
 <p>内存管理函数：aligned_alloc,calloc,malloc,realloc</p>
@@ -389,18 +653,18 @@ Value Computation得出表达式的rvalue，及其value of expression</p>
 <p>1.lvalue conversion:如果lvalue定位的对象是一个非数组类型对象，则rvalue就是该对象的对象值<br>
 2.Decay:如果lvalue定位的对象是一个数组类型对象，则rvalue就是该对象第一个元素的首地址，rvalue类型是元素对象类型对应的指针类型</p>
 <blockquote>
-<p>例：<code>int a=&#123;&#125;;</code>，rvalue是0，rvalue type是int<br>
-<code>const int a=&#123;&#125;</code>，rvalue是0，rvalue type是int<br>
-<code>int b[1]=&#123;&#125;</code>，rvalue是Address，rvalue type是int*<br>
-<code>const int b[1]=&#123;&#125;</code>，rvalue是Address，rvalue type是const int*<br>
+<p>例：<code>int a={};</code>，rvalue是0，rvalue type是int<br>
+<code>const int a={}</code>，rvalue是0，rvalue type是int<br>
+<code>int b[1]={}</code>，rvalue是Address，rvalue type是int*<br>
+<code>const int b[1]={}</code>，rvalue是Address，rvalue type是const int*<br>
 <code>int d[1][1]</code>，rvalue是Address，rvalue type是int(<em>)[1]<br>
-<code>int n=1;int e[1][n]=&#123;&#125;</code>，rvalue是Address，rvalue type是int(</em>)[n]</p>
+<code>int n=1;int e[1][n]={}</code>，rvalue是Address，rvalue type是int(</em>)[n]</p>
 </blockquote>
 <p>lvalue的对象值 &amp; lvalue的右值</p>
 <p>lvalue的对象值：lvalue定位对象的对象值<br>
 lvalue的右值：lvalue这个表达式如果被求值得到的右值</p>
 <blockquote>
-<p>例：<code>int a=0;int b[1]=&#123;1&#125;</code><br>
+<p>例：<code>int a=0;int b[1]={1}</code><br>
 a的对象值是0，b的对象值是{1}<br>
 a的右值是0，b的右值是b第一个元素的地址</p>
 </blockquote>
@@ -494,12 +758,12 @@ unsigned _BitInt(N)类型对象：<span class="katex"><span class="katex-mathml"
 <p>float类型的次规格化表示：<br>
 1.设置符号位，正数0，负数1<br>
 2.设置阶码位，8个阶码位全0<br>
-<a target="_blank" rel="noopener" href="http://3.xn--0-br6a94j6sgftg8tah93cp5cnq1l.xxx">3.有小数部分固定为0.xxx</a></p>
+<a target="_blank" rel="noopener" href="http://3.xn--0-br6a94j6sgftg8tah93cp5cnq1l.xxx" data-md-link=""><span class="md-link-icon ui-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>3.有小数部分固定为0.xxx</a></p>
 <p>能表示<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mo>−</mo><mn>149</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2^{-149}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">149</span></span></span></span></span></span></span></span></span></span></span></span>到<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msup><mn>2</mn><mrow><mo>−</mo><mn>23</mn></mrow></msup><mo stretchy="false">)</mo><mo>∗</mo><msup><mn>2</mn><mrow><mo>−</mo><mn>126</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(1-2^{-23})*2^{-126}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">23</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">126</span></span></span></span></span></span></span></span></span></span></span></span></p>
 <h4 id="枚举常量">枚举常量</h4>
-<p><code>enum Season &#123;Spring, Summer, Autumn, Winter&#125;;</code><br>
+<p><code>enum Season {Spring, Summer, Autumn, Winter};</code><br>
 枚举常量，右值分别是0，1，2，3<br>
-<code>enum Compass : char &#123;East=2, South, West, North&#125;;</code><br>
+<code>enum Compass : char {East=2, South, West, North};</code><br>
 枚举常量，右值分别是2，3，4，5</p>
 <p>枚举成员类型：<br>
 1.如果枚举类型是指定底层类型，枚举成员类型就是枚举类型<br>
@@ -538,16 +802,16 @@ UTF-8：变长编码方式，字符编码值占用1、2、3、4个编码单元�
 UTF-16：变长编码方式，字符编码值占用1、2个编码单元，即16、32比特<br>
 UTF-32：定长编码方式，字符编码值占用1个编码单元，即32比特</p>
 <h5 id="基本源字符集和基本执行字符集">基本源字符集和基本执行字符集</h5>
-<p>基本源字符集：A～Z | a~z | 0~9 | !&quot;#%&amp;'()*+,-./:;&lt;=&gt;?[\]^_{|}~ | 空格 ｜ 水平制表符 ｜ 垂直制表符 ｜ 换页符</p>
+<p>基本源字符集：A～Z | a~z | 0~9 | !"#%&amp;'()*+,-./:;&lt;=&gt;?[\]^_{|}~ | 空格 ｜ 水平制表符 ｜ 垂直制表符 ｜ 换页符</p>
 <p>基本执行字符集，除源字符集还包括：响铃符，退格符，换行符，回车符，空字符（所有比特位都为0）</p>
 <p>字符常量中单引号包围的字符五种形式：<br>
 1.源字符集中的字符：单引号，反斜杠，换行 不能直接放在一对单引号内<br>
-2.简单转移序列：\’ \\ \&quot; \? \t \v \f \a \b \n \r<br>
+2.简单转移序列：\’ \\ \" \? \t \v \f \a \b \n \r<br>
 3.\u或\U引导的通用字符名：例如，“中”的Unicode码点是U+4E2D，通用字符名就是\u4E2D或\U00004E2D<br>
 4.\引导的八进制转移序列：例如，\061或\61，十进制是49，对应’1’的ASCII，因此’\061’和’\61’都是字符’1’（八进制整数数字串长度可以是1到3位，但建议都使用3位数字）<br>
 5.\x引导的十六进制转移序列：例如，‘\x31’是字符’1’（十六进制转义<strong>不限制只有两位</strong>）</p>
 <p>字符常量的右值：</p>
-<table>
+<div class="md-table-scroll"><table>
 <thead>
 <tr>
 <th style="text-align:left">字符</th>
@@ -624,9 +888,9 @@ UTF-32：定长编码方式，字符编码值占用1个编码单元，即32比�
 <td style="text-align:left">‘\x7F’</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>字符常量的右值类型：</p>
-<table>
+<div class="md-table-scroll"><table>
 <thead>
 <tr>
 <th style="text-align:center">序号</th>
@@ -667,9 +931,9 @@ UTF-32：定长编码方式，字符编码值占用1个编码单元，即32比�
 <td style="text-align:center">编译环境决定</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>字符常量右值取值范围的限制：</p>
-<table>
+<div class="md-table-scroll"><table>
 <thead>
 <tr>
 <th style="text-align:center">序号</th>
@@ -704,7 +968,7 @@ UTF-32：定长编码方式，字符编码值占用1个编码单元，即32比�
 <td style="text-align:left">wchar_t实际类型的无符号类型</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
 <p>例：<br>
 ‘A’和’\u0041’ U+0041这个码点的字符一定是A，字符常量右值就是字符A的编码值<br>
@@ -724,7 +988,7 @@ UTF-32：定长编码方式，字符编码值占用1个编码单元，即32比�
 <h3 id="字符串">字符串</h3>
 <p>字符串分配（或重用）的对象类型是字符数组类型。如果lvalue定位的对象是一个数组类型对象，则lvalue表达式Evaluate之后的rvalue就是该对象第一个元素的手地址，rvalue类型是元素对象类型对应的指针类型。</p>
 <blockquote>
-<p>例：“hello”,u8&quot;hello&quot;,u&quot;hello&quot;,U&quot;hello&quot;,L&quot;hello&quot;的六元组模型？（见ppt）<br>
+<p>例：“hello”,u8"hello",u"hello",U"hello",L"hello"的六元组模型？（见ppt）<br>
 u8意味着每个字符编码为UTF-8,u意味着每个字符编码为UTF-16,U意味着字符编码为UTF-32,L意味着字符编码为实现定义</p>
 </blockquote>
 <h3 id="括号表达式">括号表达式</h3>
@@ -734,7 +998,7 @@ u8意味着每个字符编码为UTF-8,u意味着每个字符编码为UTF-16,U意
 1.完整求值：定位到一个对象，然后根据对象类型通过左值转换或者退化的机制来得到右值和右值类型<br>
 2.部分求值：完成定位对象这个步骤，但不会触发后续左值转换或退化的环节，也就说不会得到一个右值和右值类型<br>
 3.不求值：左值不进行求值，不对这个左值求值也意味着组成左值的所有子表达式也都不会被求值</p>
-<table>
+<div class="md-table-scroll"><table>
 <thead>
 <tr>
 <th style="text-align:left">规则</th>
@@ -841,7 +1105,7 @@ u8意味着每个字符编码为UTF-8,u意味着每个字符编码为UTF-16,U意
 <td style="text-align:center">是</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
 <p>例：<br>
 ``C<br>
@@ -862,7 +1126,7 @@ char</em> p = “hello”;  // 2</p>
 <blockquote>
 <p>理解<code>1+2</code>的求值：<code>1:&lt;1,int&gt;</code>，<code>2:&lt;2,int&gt;</code>，<code>1+2:&lt;3,int&gt;</code>；子表达式的求值，是为上一级表达式提供一个值。</p>
 </blockquote>
-<table>
+<div class="md-table-scroll"><table>
 <thead>
 <tr>
 <th style="text-align:center">序号</th>
@@ -927,16 +1191,16 @@ char</em> p = “hello”;  // 2</p>
 <td style="text-align:left"></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h4 id="后缀表达式">后缀表达式</h4>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">postfix-expression:</span><br><span class="line">    primary-expression</span><br><span class="line">    postfix-expression [ expression ]</span><br><span class="line">    postfix-expression ( argument-expression-listopt )</span><br><span class="line">    postfix-expression . identifier</span><br><span class="line">    postfix-expression-&gt; identifier</span><br><span class="line">    postfix-expression ++</span><br><span class="line">    postfix-expression --</span><br><span class="line">    compound-literal</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">postfix-expression:</span><br><span class="line">    primary-expression</span><br><span class="line">    postfix-expression [ expression ]</span><br><span class="line">    postfix-expression ( argument-expression-listopt )</span><br><span class="line">    postfix-expression . identifier</span><br><span class="line">    postfix-expression-&gt; identifier</span><br><span class="line">    postfix-expression ++</span><br><span class="line">    postfix-expression --</span><br><span class="line">    compound-literal</span><br></pre></td></tr></tbody></table></figure>
 <p>后缀表达式：初等表达式、后缀运算符构造的表达式、复合字面量<br>
 后缀运算符：<code>[]</code>、<code>()</code>、<code>.</code>、<code>-&gt;</code>、<code>++</code>、<code>--</code></p>
 <h4 id="一元表达式">一元表达式</h4>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">unary-expression:</span><br><span class="line">    postfix-expression</span><br><span class="line">    ++ unary-expression</span><br><span class="line">    -- unary-expression</span><br><span class="line">    unary-operator cast-expression</span><br><span class="line">    sizeof unary-expression</span><br><span class="line">    sizeof ( type-name )</span><br><span class="line">    alignof ( type-name )</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">unary-expression:</span><br><span class="line">    postfix-expression</span><br><span class="line">    ++ unary-expression</span><br><span class="line">    -- unary-expression</span><br><span class="line">    unary-operator cast-expression</span><br><span class="line">    sizeof unary-expression</span><br><span class="line">    sizeof ( type-name )</span><br><span class="line">    alignof ( type-name )</span><br></pre></td></tr></tbody></table></figure>
 <p>一元运算符：前缀<code>++/--</code>、<code>sizeof</code>、<code>alignof</code>、<code>&amp;</code>、<code>*</code>、一元<code>+/-</code>、<code>~</code>、<code>!</code></p>
 <h4 id="赋值表达式">赋值表达式</h4>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">assignment-expression:</span><br><span class="line">    conditional-expression</span><br><span class="line">    unary-expression assignment-operator assignment-expression</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">assignment-expression:</span><br><span class="line">    conditional-expression</span><br><span class="line">    unary-expression assignment-operator assignment-expression</span><br></pre></td></tr></tbody></table></figure>
 <p>赋值运算符：<code>=</code>、<code>*=</code>、<code>/=</code>、<code>%=</code>、<code>+=</code>、<code>-=</code>、<code>&lt;&lt;=</code>、<code>&gt;&gt;=</code>、<code>&amp;=</code>、<code>^=</code>、<code>|=</code></p>
 <h4 id="typeof运算符">typeof运算符</h4>
 <p>左值也可以作为<code>typeof</code>运算符的操作数，但typeof构造的不是表达式</p>
@@ -964,7 +1228,7 @@ char</em> p = “hello”;  // 2</p>
 -&gt; 部分求值</p>
 <h4 id="对象标识符的求值示例">对象标识符的求值示例</h4>
 <p><code>int a = 1;</code>，对象六元组：<code>A:0x0061FE10</code>，<code>Obj_T:int</code>，<code>N:a</code>，<code>S:4</code>，<code>Obj_V:1</code>，<code>Align:4</code></p>
-<table>
+<div class="md-table-scroll"><table>
 <thead>
 <tr>
 <th style="text-align:left">表达式</th>
@@ -1019,7 +1283,7 @@ char</em> p = “hello”;  // 2</p>
 <td style="text-align:left"><code>&lt;1,int&gt;+&lt;2,int&gt;</code> -&gt; <code>&lt;3, int&gt;</code>，a只求值1次</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
 <p>如何理解<code>a</code>不求值？并不需要真的访问对象a；上层表达式编译时能否推断，不是子表达式lvalue求值的判断标准。</p>
 </blockquote>
@@ -1046,7 +1310,7 @@ char</em> p = “hello”;  // 2</p>
 <p>思考：exp为什么跟++/–，=的规则没有了？因为数组类型的左值是<strong>不可修改左值</strong></p>
 </blockquote>
 <h4 id="数组对象的求值示例">数组对象的求值示例</h4>
-<table>
+<div class="md-table-scroll"><table>
 <thead>
 <tr>
 <th style="text-align:left">对象</th>
@@ -1057,19 +1321,19 @@ char</em> p = “hello”;  // 2</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>int b[1]=&#123;1&#125;</code></td>
+<td style="text-align:left"><code>int b[1]={1}</code></td>
 <td style="text-align:left"><code>b: &lt;0x0063FE10, int*&gt;</code></td>
 <td style="text-align:left"><code>sizeof(b): &lt;4, size_t&gt;</code>；<code>typeof(b)</code>等价于<code>int[1]</code>；<code>alignof(b): &lt;4, size_t&gt;</code></td>
 <td style="text-align:left"><code>&amp;b: &lt;0x0063FE10, int(*)[1]&gt;</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>int c[1][1]=&#123;1&#125;</code></td>
+<td style="text-align:left"><code>int c[1][1]={1}</code></td>
 <td style="text-align:left"><code>c: &lt;0x0064FE10, int(*)[1]&gt;</code></td>
 <td style="text-align:left"><code>sizeof(c): &lt;4, size_t&gt;</code>；<code>typeof(c)</code>等价于<code>int[1][1]</code>；<code>alignof(c): &lt;4, size_t&gt;</code></td>
 <td style="text-align:left"><code>&amp;c: &lt;0x0064FE10, int(*)[1][1]&gt;</code></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
 <p>完整求值时，rvalue是对象第一个元素的首地址，rvalue类型是元素对象类型对应的指针类型<br>
 <code>b++</code>、<code>b=NULL</code>不行：b的对象值无法修改</p>
@@ -1082,13 +1346,13 @@ char</em> p = “hello”;  // 2</p>
 4、Type-name是结构体/联合体类型，其成员对象类型有const限定类型<br>
 则这个exp被称为不可修改左值，其他exp被称为可修改左值</p>
 <p>不可修改左值不能用作前缀/后缀++/–，赋值运算符的操作数<br>
-不可修改左值与对象值是不是真的可修改无关，例如：<code>int b[1] = &#123;1&#125;;</code></p>
+不可修改左值与对象值是不是真的可修改无关，例如：<code>int b[1] = {1};</code></p>
 <h3 id="字符串字面量的求值">字符串字面量的求值</h3>
 <p>1、一个字符串意味着分配（或重用）一个字符数组对象<br>
 2、字符串是一个有效的lvalue<br>
 3、定位刚刚分配（或重用）的那个字符数组对象</p>
-<p><code>&quot;hello&quot;</code>的对象六元组：<code>A:0x00404000</code>，<code>Obj_T:char[6]</code>，<code>N:N/A</code>，<code>S:6</code>，<code>Obj_V:&#123;'h','e','l','l','o','\0'&#125;</code>，<code>Align:1</code></p>
-<table>
+<p><code>"hello"</code>的对象六元组：<code>A:0x00404000</code>，<code>Obj_T:char[6]</code>，<code>N:N/A</code>，<code>S:6</code>，<code>Obj_V:{'h','e','l','l','o','\0'}</code>，<code>Align:1</code></p>
+<div class="md-table-scroll"><table>
 <thead>
 <tr>
 <th style="text-align:left">表达式</th>
@@ -1098,51 +1362,51 @@ char</em> p = “hello”;  // 2</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>&quot;hello&quot;</code></td>
+<td style="text-align:left"><code>"hello"</code></td>
 <td style="text-align:center">完整求值</td>
 <td style="text-align:left"><code>&lt;0x00404000, char*&gt;</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>sizeof(&quot;hello&quot;)</code></td>
+<td style="text-align:left"><code>sizeof("hello")</code></td>
 <td style="text-align:center">不求值</td>
 <td style="text-align:left"><code>&lt;6, size_t&gt;</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>typeof(&quot;hello&quot;)</code></td>
+<td style="text-align:left"><code>typeof("hello")</code></td>
 <td style="text-align:center">不求值</td>
 <td style="text-align:left">等价于<code>char[6]</code>，不是表达式</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>alignof(&quot;hello&quot;)</code></td>
+<td style="text-align:left"><code>alignof("hello")</code></td>
 <td style="text-align:center">不求值</td>
 <td style="text-align:left"><code>&lt;1, size_t&gt;</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>&amp;&quot;hello&quot;</code></td>
+<td style="text-align:left"><code>&amp;"hello"</code></td>
 <td style="text-align:center">部分求值</td>
 <td style="text-align:left"><code>&lt;0x00404000, char(*)[6]&gt;</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>char str[]=&quot;hello&quot;</code></td>
+<td style="text-align:left"><code>char str[]="hello"</code></td>
 <td style="text-align:center">部分求值</td>
-<td style="text-align:left">初始化字符数组，不对&quot;hello&quot;求值</td>
+<td style="text-align:left">初始化字符数组，不对"hello"求值</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <blockquote>
-<p>思考题：<code>char* p=&quot;hello&quot;</code>和<code>char str[]=&quot;hello&quot;</code>这两个hello哪一个需要evaluate？<br>
+<p>思考题：<code>char* p="hello"</code>和<code>char str[]="hello"</code>这两个hello哪一个需要evaluate？<br>
 第一个需要evaluate，表达式的rvalue赋值给对象p；第二个用于初始化字符数组str，不进行evaluate</p>
 </blockquote>
 <blockquote>
-<p><code>&quot;hello&quot;</code>分配的对象size为什么一定是6？因为这个对象的对象类型是char[6]<br>
-<code>char str[8]=&quot;hello&quot;</code>：第6个’\0’是&quot;hello&quot;自身带的，后面2个’\0’是自动填充的</p>
+<p><code>"hello"</code>分配的对象size为什么一定是6？因为这个对象的对象类型是char[6]<br>
+<code>char str[8]="hello"</code>：第6个’\0’是"hello"自身带的，后面2个’\0’是自动填充的</p>
 </blockquote>
 <h3 id="复合字面量的求值">复合字面量的求值</h3>
 <p>1、Compound Literal意味着分配一个指定类型的对象<br>
 2、Compound Literal是一个有效的lvalue表达式<br>
 3、定位刚刚分配的那个对象</p>
-<p><code>(int)&#123;1&#125;</code>的对象六元组：<code>A:0x0066FE10</code>，<code>Obj_T:int</code>，<code>N:N/A</code>，<code>S:4</code>，<code>Obj_V:1</code>，<code>Align:4</code></p>
-<table>
+<p><code>(int){1}</code>的对象六元组：<code>A:0x0066FE10</code>，<code>Obj_T:int</code>，<code>N:N/A</code>，<code>S:4</code>，<code>Obj_V:1</code>，<code>Align:4</code></p>
+<div class="md-table-scroll"><table>
 <thead>
 <tr>
 <th style="text-align:left">表达式</th>
@@ -1152,50 +1416,50 @@ char</em> p = “hello”;  // 2</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>(int)&#123;1&#125;</code></td>
+<td style="text-align:left"><code>(int){1}</code></td>
 <td style="text-align:center">完整求值</td>
 <td style="text-align:left"><code>&lt;1, int&gt;</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>sizeof((int)&#123;1&#125;)</code></td>
+<td style="text-align:left"><code>sizeof((int){1})</code></td>
 <td style="text-align:center">不求值</td>
 <td style="text-align:left"><code>&lt;4, size_t&gt;</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>typeof((int)&#123;1&#125;)</code></td>
+<td style="text-align:left"><code>typeof((int){1})</code></td>
 <td style="text-align:center">不求值</td>
 <td style="text-align:left">等价于<code>int</code>，不是表达式</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>alignof((int)&#123;1&#125;)</code></td>
+<td style="text-align:left"><code>alignof((int){1})</code></td>
 <td style="text-align:center">不求值</td>
 <td style="text-align:left"><code>&lt;4, size_t&gt;</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>&amp;(int)&#123;1&#125;</code></td>
+<td style="text-align:left"><code>&amp;(int){1}</code></td>
 <td style="text-align:center">部分求值</td>
 <td style="text-align:left"><code>&lt;0x0066FE10, int*&gt;</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>++(int)&#123;1&#125;</code> / <code>(int)&#123;1&#125;++</code></td>
+<td style="text-align:left"><code>++(int){1}</code> / <code>(int){1}++</code></td>
 <td style="text-align:center">部分求值</td>
 <td style="text-align:left"><code>&lt;2, int&gt;</code> / <code>&lt;1, int&gt;</code>，有副作用</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>--(int)&#123;1&#125;</code> / <code>(int)&#123;1&#125;--</code></td>
+<td style="text-align:left"><code>--(int){1}</code> / <code>(int){1}--</code></td>
 <td style="text-align:center">部分求值</td>
 <td style="text-align:left"><code>&lt;0, int&gt;</code> / <code>&lt;1, int&gt;</code>，有副作用</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>(int)&#123;1&#125;=2</code></td>
+<td style="text-align:left"><code>(int){1}=2</code></td>
 <td style="text-align:center">部分求值</td>
 <td style="text-align:left"><code>&lt;2, int&gt;</code></td>
 </tr>
 </tbody>
-</table>
-<p><code>(const int)&#123;1&#125;</code>是不可修改左值；<code>(int[1])&#123;1&#125;</code>完整求值是<code>&lt;0x0067FE10, int*&gt;</code>，<code>&amp;(int[1])&#123;1&#125;</code>是<code>&lt;0x0067FE10, int(*)[1]&gt;</code></p>
+</table></div>
+<p><code>(const int){1}</code>是不可修改左值；<code>(int[1]){1}</code>完整求值是<code>&lt;0x0067FE10, int*&gt;</code>，<code>&amp;(int[1]){1}</code>是<code>&lt;0x0067FE10, int(*)[1]&gt;</code></p>
 <blockquote>
-<p><code>(int)&#123;1&#125;+=2</code> vs. <code>(int)&#123;1&#125;=(int)&#123;1&#125;+2</code>：前者分配一个对象，后者分配两个对象</p>
+<p><code>(int){1}+=2</code> vs. <code>(int){1}=(int){1}+2</code>：前者分配一个对象，后者分配两个对象</p>
 </blockquote>
 <h3 id="理解sizeof和">理解sizeof和&amp;</h3>
 <p>给定一个定位非变长数组对象的lvalue表达式<br>
@@ -1249,124 +1513,91 @@ Referenced Type和Pointer Type的对应关系是指针关系的核心概念</p>
 <h3 id="单选题">单选题</h3>
 <p><code>char d[2][3][4][5],</code> 令<code>x=d</code>，则x如何声明？<br>
 A <code>char* x</code>   B <code>char(* x)[2][3][4][5]</code>   C <code>char(* x)[3][4][5]</code>   D <code>char x</code></p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://lanc1oud.top">LanC1oud</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://lanc1oud.top/posts/47e0d445.html">http://lanc1oud.top/posts/47e0d445.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://lanc1oud.top" target="_blank">炊煙雲海。</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C-C/">C/C++</a></div><div class="post-share"><div class="social-share" data-image="/img/xiawula.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/posts/288c757f.html" title="BUAA-ML 2025-2026春季试题回忆版"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">BUAA-ML 2025-2026春季试题回忆版</div></div><div class="info-2"><div class="info-item-1">基本和凉宫秋月博客题型一致。</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/xiawula.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">LanC1oud</div><div class="author-info-description">循此苦旅，以达繁星。</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LanC1oud"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">此网站暂时疏于运营（）目前只顺带上传一些学习笔记。假期有空也许会更新独特的内容。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Week-1"><span class="toc-number">1.</span> <span class="toc-text">Week 1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.</span> <span class="toc-text">C语言中的对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text">类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Week-2"><span class="toc-number">2.</span> <span class="toc-text">Week 2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E9%85%8D%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.1.</span> <span class="toc-text">分配对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%A0%87%E8%AF%86%E7%AC%A6%E5%AE%9A%E4%B9%89"><span class="toc-number">2.1.1.</span> <span class="toc-text">对象标识符定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%85%AD%E5%85%83%E7%BB%84%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.1.2.</span> <span class="toc-text">对象六元组模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AD%97%E9%9D%A2%E9%87%8F-String-Literal"><span class="toc-number">2.1.3.</span> <span class="toc-text">通过字符串字面量(String Literal)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%A4%8D%E5%90%88%E5%AD%97%E9%9D%A2%E9%87%8F-Compound-Literal"><span class="toc-number">2.1.4.</span> <span class="toc-text">通过复合字面量(Compound Literal)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-number">2.1.5.</span> <span class="toc-text">通过内存管理函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.2.</span> <span class="toc-text">定位对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Week-3"><span class="toc-number">3.</span> <span class="toc-text">Week 3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F-Constant"><span class="toc-number">3.1.</span> <span class="toc-text">常量(Constant)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E5%B8%B8%E9%87%8F"><span class="toc-number">3.1.1.</span> <span class="toc-text">整数常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E5%B8%B8%E9%87%8F"><span class="toc-number">3.1.2.</span> <span class="toc-text">浮点数常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE%E5%B8%B8%E9%87%8F"><span class="toc-number">3.1.3.</span> <span class="toc-text">枚举常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E5%B8%B8%E9%87%8F"><span class="toc-number">3.1.4.</span> <span class="toc-text">字符常量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="toc-number">3.1.4.1.</span> <span class="toc-text">字符编码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%BA%90%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%89%A7%E8%A1%8C%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="toc-number">3.1.4.2.</span> <span class="toc-text">基本源字符集和基本执行字符集</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%84%E5%AE%9A%E4%B9%89%E5%B8%B8%E9%87%8F"><span class="toc-number">3.1.5.</span> <span class="toc-text">预定义常量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">3.2.</span> <span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%AC%E5%8F%B7%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">3.3.</span> <span class="toc-text">括号表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lvalue%E6%B1%82%E5%80%BC%E7%9A%84%E5%9C%BA%E6%99%AF%E5%B7%AE%E5%BC%82"><span class="toc-number">3.4.</span> <span class="toc-text">lvalue求值的场景差异</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Week-4"><span class="toc-number">4.</span> <span class="toc-text">Week 4</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E9%80%92%E5%BD%92%E6%B1%82%E5%80%BC%E6%9C%BA%E5%88%B6"><span class="toc-number">4.1.</span> <span class="toc-text">表达式的递归求值机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">4.1.1.</span> <span class="toc-text">后缀表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E5%85%83%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">4.1.2.</span> <span class="toc-text">一元表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B5%8B%E5%80%BC%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">4.1.3.</span> <span class="toc-text">赋值表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#typeof%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">4.1.4.</span> <span class="toc-text">typeof运算符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFLocator-Value"><span class="toc-number">4.2.</span> <span class="toc-text">什么是Locator Value?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D%E9%9D%9E%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E7%9A%84lvalue%E7%9A%84%E6%B1%82%E5%80%BC%E8%A7%84%E5%88%99"><span class="toc-number">4.3.</span> <span class="toc-text">定位非数组对象的lvalue的求值规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%A0%87%E8%AF%86%E7%AC%A6%E7%9A%84%E6%B1%82%E5%80%BC%E7%A4%BA%E4%BE%8B"><span class="toc-number">4.3.1.</span> <span class="toc-text">对象标识符的求值示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#a-2-vs-a-a-2"><span class="toc-number">4.3.2.</span> <span class="toc-text">a+&#x3D;2 vs. a&#x3D;a+2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8Eint-a%E8%A7%82%E5%AF%9Fconst-int-a"><span class="toc-number">4.3.3.</span> <span class="toc-text">从int a观察const int a</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D%E6%99%AE%E9%80%9A%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E7%9A%84lvalue%E7%9A%84%E6%B1%82%E5%80%BC%E8%A7%84%E5%88%99"><span class="toc-number">4.4.</span> <span class="toc-text">定位普通数组对象的lvalue的求值规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B1%82%E5%80%BC%E7%A4%BA%E4%BE%8B"><span class="toc-number">4.4.1.</span> <span class="toc-text">数组对象的求值示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E4%BF%AE%E6%94%B9%E5%B7%A6%E5%80%BC-vs-%E4%B8%8D%E5%8F%AF%E4%BF%AE%E6%94%B9%E5%B7%A6%E5%80%BC"><span class="toc-number">4.4.2.</span> <span class="toc-text">可修改左值 vs. 不可修改左值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AD%97%E9%9D%A2%E9%87%8F%E7%9A%84%E6%B1%82%E5%80%BC"><span class="toc-number">4.5.</span> <span class="toc-text">字符串字面量的求值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%90%88%E5%AD%97%E9%9D%A2%E9%87%8F%E7%9A%84%E6%B1%82%E5%80%BC"><span class="toc-number">4.6.</span> <span class="toc-text">复合字面量的求值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%90%86%E8%A7%A3sizeof%E5%92%8C"><span class="toc-number">4.7.</span> <span class="toc-text">理解sizeof和&amp;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B%E5%AF%B9%E8%B1%A1%E7%9A%84lvalue%E7%9A%84%E6%B1%82%E5%80%BC"><span class="toc-number">4.8.</span> <span class="toc-text">定位指针类型对象的lvalue的求值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exp%E5%BD%A2%E5%BC%8F%E7%9A%84lvalue"><span class="toc-number">4.9.</span> <span class="toc-text">*exp形式的lvalue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E7%AE%97%E6%9C%AF%EF%BC%9Ap-n"><span class="toc-number">4.10.</span> <span class="toc-text">指针算术：p+n</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E9%80%89%E9%A2%98"><span class="toc-number">4.11.</span> <span class="toc-text">单选题</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/47e0d445.html" title="C语言系统级编程">C语言系统级编程</a><time datetime="2026-09-15T16:34:54.000Z" title="发表于 2026-09-16 00:34:54">2026-09-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/288c757f.html" title="BUAA-ML 2025-2026春季试题回忆版">BUAA-ML 2025-2026春季试题回忆版</a><time datetime="2026-07-01T04:53:58.000Z" title="发表于 2026-07-01 12:53:58">2026-07-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2426a238.html" title="BUAA-OS-Challenge Thread Model">BUAA-OS-Challenge Thread Model</a><time datetime="2026-06-27T08:41:23.000Z" title="发表于 2026-06-27 16:41:23">2026-06-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/212c98c7.html" title="OO-Unit4-UML与图书管理系统 暨OO课程总结">OO-Unit4-UML与图书管理系统 暨OO课程总结</a><time datetime="2026-06-27T08:37:12.000Z" title="发表于 2026-06-27 16:37:12">2026-06-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/5ea8858b.html" title="BUAA-ML">BUAA-ML</a><time datetime="2026-06-19T07:55:51.000Z" title="发表于 2026-06-19 15:55:51">2026-06-19</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By LanC1oud</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3-b2</a></span></div><div class="footer_custom_text">Hi,welcome to LanC1oud's Blog.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3-b2"></script><script src="/js/main.js?v=5.5.3-b2"></script><div class="js-pjax"><script>(async () => {
-  const showKatex = () => {
-    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
-  }
+</article>
+<div class="article-tags slide-up"><a class="tag" href="/tags/C-C/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>C/C++</a></div>
 
-  if (!window.katex_js_css) {
-    window.katex_js_css = true
-    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css')
-    if (false) {
-      await btf.getScript('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/copy-tex.min.js')
-    }
-  }
 
-  showKatex()
-})()</script><script>(() => {
-  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
-  const option = {"emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tvgif-白眼":"48f75163437445665a9be80bb316e4cb252c5415.gif","tvgif-doge":"302d6c88c63ed162c81a49cafe7ed2709e6fb955.gif","tvgif-坏笑":"5d2572efd09aab5dde9e2a198bb3f9ac1e2a982e.gif","tvgif-难过":"9c6b41008a67755410f712334c64313df5f91b3f.gif","tvgif-生气":"1902a5a2df5b5c931d88c12f0feb264b1e109d0d.gif","tvgif-委屈":"af5a5853edb43a8178a8cb5df707fa5e88143699.gif","tvgif-斜眼笑":"c66568b471192ca1f62f6ed4384dc1b283ab7508.gif","tvgif-呆":"d3fa91e4db9215eb1e20ab9da44f1214aa4bda7b.gif","tvgif-发怒":"3959eb81b952e4fa8d269d98f9e3639172d84073.gif","tvgif-惊吓":"13549060757fcd92b11d0657d9b3b6038f97abb6.gif","tvgif-呕吐":"db58e9442aae26694af18cc1683607cca3a16763.gif","tvgif-思考":"b63f9146bfd985af014f8d6d4bdb498805be48f9.gif","tvgif-微笑":"b98656855d782f61cb8edc7f7fca6563ecafff7e.gif","tvgif-疑问":"fce1b1a0f3b0e39a2dc16a18508dba7b91e929f4.gif","tvgif-大哭":"cba61f05f3039b02a7ffc0dfcd9d7995df9fdd74.gif","tvgif-鼓掌":"be106e6b265883a9f28fbe10f7b765701e2618d4.gif","tvgif-抠鼻":"696d9f93e722144dc2a78aeffc569418fdf3d565.gif","tvgif-亲亲":"3534ea44ab74bd20352b88c245a06c4b4c46d271.gif","tvgif-调皮":"fcd967395fd14e4dd5829fa7e8a967ce23205e52.gif","tvgif-笑哭":"1c2fd1e8c9dde12812f86e5d4cbddd8993d98082.gif","tvgif-晕":"030040ec5c9ddc9e3d067658c4139e7314ab42f8.gif","tvgif-点赞":"30ecff401245fb56bcc1cf588d1809ac1ab1607c.gif","tvgif-害羞":"411a3e459e8580f5bfd9f639a408247c4b509935.gif","tvgif-睡着":"3c8b5e293261287a6203597e29b3de07df4d18c6.gif","tvgif-色":"a0c6d99ab0ab63b8648f5283ff72cec04b604828.gif","tvgif-吐血":"e17e4539e169d14a3389ff147afea760cebe5de5.gif","tvgif-无奈":"eb4cb5f07cfd177c7e6a7914316717e56d9cc1d0.gif","tvgif-再见":"344f61609ecce2008520dc8a977b6169215748a9.gif","tvgif-流汗":"390bccec65eaff536bd5bb2a0c5b8b0bdea47334.gif","tvgif-偷笑":"7f11e6f7f63e79112b833bd41fa13a83d7cd8474.gif","tvgif-抓狂":"a476b93ecd8e94ac3257323fd822f91cef212de2.gif","tvgif-黑人问号":"b609adf664be33224a9923262031165ae3e34cd2.gif","tvgif-困":"91c2bf34ecf842d7016c01d841db3d4074bd281f.gif","tvgif-打脸":"b0fad4856e59c1240e448437da3287bb5ce547e5.gif","tvgif-闭嘴":"a3fc5388b09e945be3f18fe23bfed5874a0285b7.gif","tvgif-鄙视":"293b5d459e6264ecf314d20937a936fa672ccd1e.gif","tvgif-腼腆":"30984e8264324f901d19bea85dada7103b695534.gif","tvgif-馋":"2525c5703c594e5f0752f68db8948773caebde47.gif","tvgif-可爱":"f92d20f76258bc5f33fc9d7c5e2a1d41fef19a7c.gif","tvgif-发财":"76131e52c9b033681b4c896c6024d29ef7ec7ec2.gif","tvgif-生病":"beb94829fe04f1a41bd6ca611e1f6ca9ca169afa.gif","tvgif-流鼻血":"8ef473f74a849420da712487b2f56ecca1f695f5.gif","tvgif-尴尬":"e0b84ef5ee3e5b8978e584c7c5a6550c51d15f84.gif","tvgif-大佬":"14ca0c05382b8741940942b2430b7a8d55c02f7e.gif","2233娘-大笑":"16b8794be990cefa6caeba4d901b934a227ee3b8.png","2233娘-吃惊":"d1628c43d35b1530c0504a643ff80b6189fa0a43.png","2233娘-大哭":"476a2a60f6e337b8c0697a592e0aa82781f6b33b.png","2233娘-耶":"d7178e258a0efc969b65ccc2b1322fb235f5dff4.png","2233娘-卖萌":"ea893aa25355de95ab4f03c2dad3f0c58d0c159e.png","2233娘-疑问":"0b41f509351958dbb63d472fec0132d1bd03bd14.png","2233娘-汗":"247cd9df8cdf84b18368c21e3b2dd374e84c0927.png","2233娘-困惑":"714eeb4eae0d0933b4ff08b7df788b1982f6b940.png","2233娘-怒":"f31953119c51b9748016440ac0b632f779929b37.png","2233娘-委屈":"d9d0bf9d358af8d5761093ec66d4e3f60d963a63.png","2233娘-郁闷":"485203fe7100f2c8fc40b2800a18fe20b35f2f1a.png","2233娘-第一":"3754ee6e5985bd0bd7dfb668981f2a8733398ebd.png","2233娘-喝水":"695bf5429472049b52c1e0de586f8a2511195a23.png","2233娘-吐魂":"e999af499edf38a91ca68b1a9d2f97042c1d6734.png","2233娘-无言":"fdb5870f32cfaf7949e0f88a13f6feba4a48b719.png","明日方舟-喷喷":"10e7f252d5106d46cb47c666e4c2e693bfa66959.png","明日方舟-溜了":"a103c00f0f4be3bd674723802d712980196817f4.png","明日方舟-嘿嘿":"14dd3de8f576204ee6d9c4948f8fa360ae82041c.png","明日方舟-怎么回事":"6cb24d88e87d34584350559fb92da9104ad14d77.png","明日方舟-吃瓜":"b0c87e42fdb27b6683a3ae873a89383e789a38f3.png","明日方舟-不可以哦":"1a4e9cfe14ca3d5e35e25671f1dd3451d0f1e562.png","明日方舟-喧嚣的风":"c4d1b6fb903d2e6d74c0ab0a31029fe184c95c14.png","明日方舟-哭了":"553937828ebbacd15edb7f4c8b0d6ff94b2aafd0.png","明日方舟-不好意思":"9a411c1930b4679fd5ef5419ce5268c4271efe5c.png","明日方舟-一下就好":"7ec17d337981a9a01062160812324289801ed78c.png","音律联觉-得意":"5e47efce45e661421b7b779f6096880d4f6862e5.png","音律联觉-点赞":"0ad4f2f6268522168917ffa1c1fd41947867f74d.png","音律联觉-哈欠":"77ea4ecc3ac14eaf530de59a97fb3ce0286f05e1.png","音律联觉-喝茶":"bd9883a889255e2b83bb01e069010ad589c83d3a.png","音律联觉-就是你了":"afc63cf67ecdf2830c3e68d3cc699283c4857093.png","音律联觉-可爱":"9bc0aeb667bbbbc84ecf89c31dc55dd5723d3d7b.png","音律联觉-热情":"a69b8c25a31eb48ade5e2bae67e486643ce83c0a.png","音律联觉-叹气":"36bdbed295863819755fafae7780518776cc5d82.png","音律联觉-无奈":"18782bd913430403c666678feb02da2ee2b7ad05.png","音律联觉-正在记录":"289af83b268e40f22a93aa62d995d4649f7000f7.png"}}
+  <div class="article-share slide-up" id="share">
+    <div class="body">
+      <div class="social-wrap dis-select"><a class="social share-item qrcode ui-interactive is-icon-only" onclick="util.toggle(&quot;share-qrcode&quot;)" aria-label="分享文章: QR Code" title="分享文章: QR Code"><span class="share-item__icon ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" d="M10.553 13.447c-.424-.424-.95-.596-1.535-.675c-.553-.074-1.25-.074-2.086-.074H5.827c-.58 0-1.065 0-1.459.037c-.411.04-.795.124-1.146.34c-.345.21-.634.5-.845.844c-.216.352-.3.735-.34 1.147C2 15.459 2 15.944 2 16.525v.068c0 .884 0 1.597.055 2.17c.056.592.175 1.108.459 1.571c.288.47.682.864 1.152 1.152c.463.284.979.403 1.57.46C5.81 22 6.524 22 7.407 22h.07c.58 0 1.064 0 1.458-.037c.412-.04.795-.124 1.147-.34c.344-.21.633-.5.844-.844c.216-.352.3-.736.34-1.147c.037-.394.037-.879.037-1.46v-1.104c0-.836 0-1.533-.074-2.086c-.079-.584-.251-1.111-.675-1.535m-1.62-11.41c.412.04.795.124 1.147.34c.344.21.633.5.844.845c.216.351.3.735.34 1.146c.037.394.037.879.037 1.46v1.104c0 .836 0 1.533-.074 2.086c-.079.584-.251 1.111-.675 1.535s-.95.596-1.535.675c-.553.074-1.25.074-2.086.074H5.827c-.58 0-1.065 0-1.459-.037c-.411-.04-.795-.124-1.146-.34a2.56 2.56 0 0 1-.845-.844c-.216-.352-.3-.735-.34-1.147C2 8.54 2 8.056 2 7.475v-.068c0-.884 0-1.597.055-2.17c.056-.592.175-1.108.459-1.571c.288-.47.682-.864 1.152-1.152c.463-.284.979-.403 1.57-.46C5.81 2 6.524 2 7.407 2h.07c.58 0 1.064 0 1.458.037M16.593 2h-.068c-.58 0-1.065 0-1.46.037c-.41.04-.794.124-1.146.34c-.344.21-.633.5-.844.845c-.216.351-.3.735-.34 1.146c-.037.394-.037.879-.037 1.46v1.104c0 .836 0 1.533.074 2.086c.079.584.251 1.111.675 1.535s.95.596 1.535.675c.553.074 1.25.074 2.086.074h1.105c.58 0 1.065 0 1.459-.037c.411-.04.795-.124 1.146-.34c.345-.21.634-.5.845-.844c.216-.352.3-.735.34-1.147C22 8.54 22 8.056 22 7.475v-.068c0-.884 0-1.597-.055-2.17c-.056-.592-.175-1.108-.459-1.571a3.5 3.5 0 0 0-1.152-1.152c-.463-.284-.979-.403-1.57-.46C18.19 2 17.477 2 16.594 2" opacity=".5"></path><path fill="currentColor" d="M14.093 21.302a.698.698 0 1 1-1.396 0v-2.79h1.396z" opacity=".4"></path><path fill="currentColor" d="M21.302 12.698a.7.7 0 0 0-.697.697v3.256H22v-3.256a.7.7 0 0 0-.698-.697" opacity=".5"></path><path fill="currentColor" d="M16.076 16.617c-.076.184-.076.417-.076.883s0 .699.076.883a1 1 0 0 0 .541.54c.184.077.417.077.883.077s.699 0 .883-.076a1 1 0 0 0 .54-.541c.077-.184.077-.417.077-.883s0-.699-.076-.883a1 1 0 0 0-.541-.54C18.199 16 17.966 16 17.5 16s-.699 0-.883.076a1 1 0 0 0-.54.541"></path><path fill="currentColor" d="M22 18.535v-.023h-1.396c0 .443 0 .74-.016.97c-.015.224-.043.333-.073.405a1.16 1.16 0 0 1-.629.63c-.072.029-.18.056-.405.072c-.23.015-.527.016-.97.016h-1.86V22h1.883c.414 0 .759 0 1.042-.02a2.6 2.6 0 0 0 .844-.175a2.56 2.56 0 0 0 1.384-1.384c.112-.27.156-.549.176-.844c.02-.283.02-.628.02-1.042" opacity=".7"></path><path fill="currentColor" d="M12.697 16.616v.035h1.396c0-.668 0-1.116.035-1.458c.034-.33.093-.482.16-.583a1.2 1.2 0 0 1 .321-.32c.101-.068.254-.128.584-.161c.342-.035.79-.036 1.458-.036h1.86v-1.395h-1.896c-.623 0-1.142 0-1.563.043c-.44.044-.85.142-1.218.388c-.28.187-.519.426-.706.706c-.246.368-.343.777-.388 1.217c-.043.421-.043.94-.043 1.564" opacity=".6"></path><path fill="currentColor" d="M5.508 18.69c.219.155.528.155 1.146.155c.619 0 .928 0 1.146-.155a.8.8 0 0 0 .2-.199c.154-.218.154-.527.154-1.146s0-.927-.155-1.146A.8.8 0 0 0 7.8 16c-.218-.155-.527-.155-1.146-.155s-.927 0-1.146.155a.8.8 0 0 0-.199.2c-.155.218-.155.527-.155 1.145c0 .619 0 .928.155 1.146a.8.8 0 0 0 .2.2M6.654 8.155c-.618 0-.927 0-1.146-.155a.8.8 0 0 1-.199-.2c-.155-.217-.155-.527-.155-1.145c0-.619 0-.928.155-1.146a.8.8 0 0 1 .2-.2c.218-.154.527-.154 1.145-.154c.619 0 .928 0 1.146.155a.8.8 0 0 1 .2.199c.154.218.154.527.154 1.146s0 .928-.155 1.146A.8.8 0 0 1 7.8 8c-.218.155-.527.155-1.146.155M16.2 8c.218.155.527.155 1.146.155s.927 0 1.146-.155a.8.8 0 0 0 .199-.199c.155-.218.155-.528.155-1.146c0-.619 0-.928-.155-1.146a.8.8 0 0 0-.2-.2c-.218-.154-.527-.154-1.145-.154c-.619 0-.928 0-1.146.155a.8.8 0 0 0-.2.199c-.154.218-.154.527-.154 1.146s0 .928.155 1.146A.8.8 0 0 0 16.2 8"></path></svg></span></a><a class="social share-item weibo ui-interactive is-icon-only" href="https://service.weibo.com/share/share.php?url=http%3A%2F%2Flanc1oud.top%2Fposts%2F47e0d445&amp;title=C%E8%AF%AD%E8%A8%80%E7%B3%BB%E7%BB%9F%E7%BA%A7%E7%BC%96%E7%A8%8B%20-%20%E7%82%8A%E7%85%99%E9%9B%B2%E6%B5%B7%E3%80%82&amp;summary=%E5%AD%A6%E4%B9%A0%E8%BF%99%E9%97%A8%E8%AF%BE%E6%98%AFC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E8%80%85%E6%9C%80%E5%B9%B8%E8%BF%90%E7%9A%84%E4%B8%80%E5%A4%A9%EF%BC%8C%E5%9B%A0%E4%B8%BA%E4%BB%96%E4%BB%AC%E7%BB%88%E4%BA%8E%E8%83%BD%E6%89%BE%E5%88%B0%E5%AF%B9%E8%B1%A1%E4%BA%86%E3%80%82" target="_blank" rel="external nofollow noopener noreferrer" aria-label="分享文章: Weibo" title="分享文章: Weibo"><span class="share-item__icon ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Simple Icons - https://creativecommons.org/publicdomain/zero/1.0/ --><path fill="currentColor" d="M10.098 20.323c-3.977.391-7.414-1.406-7.672-4.02-.259-2.609 2.759-5.047 6.74-5.441 3.979-.394 7.413 1.404 7.671 4.018.259 2.6-2.759 5.049-6.737 5.439l-.002.004zM9.05 17.219c-.384.616-1.208.884-1.829.602-.612-.279-.793-.991-.406-1.593.379-.595 1.176-.861 1.793-.601.622.263.82.972.442 1.592zm1.27-1.627c-.141.237-.449.353-.689.253-.236-.09-.313-.361-.177-.586.138-.227.436-.346.672-.24.239.09.315.36.18.601l.014-.028zm.176-2.719c-1.893-.493-4.033.45-4.857 2.118-.836 1.704-.026 3.591 1.886 4.21 1.983.64 4.318-.341 5.132-2.179.8-1.793-.201-3.642-2.161-4.149zm7.563-1.224c-.346-.105-.57-.18-.405-.615.375-.977.42-1.804 0-2.404-.781-1.112-2.915-1.053-5.364-.03 0 0-.766.331-.571-.271.376-1.217.315-2.224-.27-2.809-1.338-1.337-4.869.045-7.888 3.08C1.309 10.87 0 13.273 0 15.348c0 3.981 5.099 6.395 10.086 6.395 6.536 0 10.888-3.801 10.888-6.82 0-1.822-1.547-2.854-2.915-3.284v.01zm1.908-5.092c-.766-.856-1.908-1.187-2.96-.962-.436.09-.706.511-.616.932.09.42.511.691.932.602.511-.105 1.067.044 1.442.465.376.421.466.977.316 1.473-.136.406.089.856.51.992.405.119.857-.105.992-.512.33-1.021.12-2.178-.646-3.035l.03.045zm2.418-2.195c-1.576-1.757-3.905-2.419-6.054-1.968-.496.104-.812.587-.706 1.081.104.496.586.813 1.082.707 1.532-.331 3.185.15 4.296 1.383 1.112 1.246 1.429 2.943.947 4.416-.165.48.106 1.007.586 1.157.479.165.991-.104 1.157-.586.675-2.088.241-4.478-1.338-6.235l.03.045z"></path></svg></span></a><a class="social share-item x ui-interactive is-icon-only" href="https://x.com/intent/tweet?text=C%E8%AF%AD%E8%A8%80%E7%B3%BB%E7%BB%9F%E7%BA%A7%E7%BC%96%E7%A8%8B%20-%20%E7%82%8A%E7%85%99%E9%9B%B2%E6%B5%B7%E3%80%82&amp;url=http%3A%2F%2Flanc1oud.top%2Fposts%2F47e0d445" target="_blank" rel="external nofollow noopener noreferrer" aria-label="分享文章: X" title="分享文章: X"><span class="share-item__icon ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Simple Icons - https://creativecommons.org/publicdomain/zero/1.0/ --><path fill="currentColor" d="M14.234 10.162L22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299l-.929-1.329L3.076 1.56h3.182l5.965 8.532l.929 1.329l7.754 11.09h-3.182z"></path></svg></span></a><a class="social share-item telegram ui-interactive is-icon-only" href="https://t.me/share/url?url=http%3A%2F%2Flanc1oud.top%2Fposts%2F47e0d445&amp;text=C%E8%AF%AD%E8%A8%80%E7%B3%BB%E7%BB%9F%E7%BA%A7%E7%BC%96%E7%A8%8B%20-%20%E7%82%8A%E7%85%99%E9%9B%B2%E6%B5%B7%E3%80%82" target="_blank" rel="external nofollow noopener noreferrer" aria-label="分享文章: Telegram" title="分享文章: Telegram"><span class="share-item__icon ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Simple Icons - https://creativecommons.org/publicdomain/zero/1.0/ --><path fill="currentColor" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12a12 12 0 0 0 12-12A12 12 0 0 0 12 0zm4.962 7.224c.1-.002.321.023.465.14a.5.5 0 0 1 .171.325c.016.093.036.306.02.472c-.18 1.898-.962 6.502-1.36 8.627c-.168.9-.499 1.201-.82 1.23c-.696.065-1.225-.46-1.9-.902c-1.056-.693-1.653-1.124-2.678-1.8c-1.185-.78-.417-1.21.258-1.91c.177-.184 3.247-2.977 3.307-3.23c.007-.032.014-.15-.056-.212s-.174-.041-.249-.024q-.159.037-5.061 3.345q-.72.495-1.302.48c-.428-.008-1.252-.241-1.865-.44c-.752-.245-1.349-.374-1.297-.789q.04-.324.893-.663q5.247-2.286 6.998-3.014c3.332-1.386 4.025-1.627 4.476-1.635"></path></svg></span></a><a class="social share-item whatsapp ui-interactive is-icon-only" href="https://wa.me/?text=C%E8%AF%AD%E8%A8%80%E7%B3%BB%E7%BB%9F%E7%BA%A7%E7%BC%96%E7%A8%8B%20-%20%E7%82%8A%E7%85%99%E9%9B%B2%E6%B5%B7%E3%80%82%0Ahttp%3A%2F%2Flanc1oud.top%2Fposts%2F47e0d445" target="_blank" rel="external nofollow noopener noreferrer" aria-label="分享文章: WhatsApp" title="分享文章: WhatsApp"><span class="share-item__icon ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Simple Icons - https://creativecommons.org/publicdomain/zero/1.0/ --><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967c-.273-.099-.471-.148-.67.15c-.197.297-.767.966-.94 1.164c-.173.199-.347.223-.644.075c-.297-.15-1.255-.463-2.39-1.475c-.883-.788-1.48-1.761-1.653-2.059c-.173-.297-.018-.458.13-.606c.134-.133.298-.347.446-.52s.198-.298.298-.497c.099-.198.05-.371-.025-.52s-.669-1.612-.916-2.207c-.242-.579-.487-.5-.669-.51a13 13 0 0 0-.57-.01c-.198 0-.52.074-.792.372c-.272.297-1.04 1.016-1.04 2.479c0 1.462 1.065 2.875 1.213 3.074s2.096 3.2 5.077 4.487c.709.306 1.262.489 1.694.625c.712.227 1.36.195 1.871.118c.571-.085 1.758-.719 2.006-1.413s.248-1.289.173-1.413c-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214l-3.741.982l.998-3.648l-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884c2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.82 11.82 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.9 11.9 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413"></path></svg></span></a><a class="social share-item email ui-interactive is-icon-only" href="mailto:?subject=C%E8%AF%AD%E8%A8%80%E7%B3%BB%E7%BB%9F%E7%BA%A7%E7%BC%96%E7%A8%8B%20-%20%E7%82%8A%E7%85%99%E9%9B%B2%E6%B5%B7%E3%80%82&amp;body=http%3A%2F%2Flanc1oud.top%2Fposts%2F47e0d445" aria-label="分享文章: Email" title="分享文章: Email"><span class="share-item__icon ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" fill-rule="evenodd" d="M3.172 5.172C2 6.343 2 8.229 2 12s0 5.657 1.172 6.828C4.343 20 6.229 20 10 20h4c3.771 0 5.657 0 6.828-1.172C22 17.657 22 15.771 22 12s0-5.657-1.172-6.828C19.657 4 17.771 4 14 4h-4C6.229 4 4.343 4 3.172 5.172m15.404 2.348a.75.75 0 0 1-.096 1.056l-2.196 1.83c-.887.739-1.605 1.338-2.24 1.746-.66.424-1.303.693-2.044.693s-1.384-.269-2.045-.693c-.634-.408-1.352-1.007-2.239-1.745L5.52 8.576a.75.75 0 1 1 .96-1.152l2.159 1.799c.933.777 1.58 1.315 2.128 1.667.529.34.888.455 1.233.455s.704-.115 1.233-.455c.547-.352 1.195-.89 2.128-1.667l2.159-1.8a.75.75 0 0 1 1.056.097" clip-rule="evenodd"></path></svg></span></a></div>
+      <div class="share-qrcode" id="share-qrcode" style="opacity:0;height:0"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&amp;data=http%3A%2F%2Flanc1oud.top%2Fposts%2F47e0d445" onerror="this.onerror=null;this.src=&quot;/images/stellar-error.491ee870f4940739.svg&quot;"></div>
+    </div>
+  </div>
 
-  const initValine = (el, path) => {
-    if (isShuoshuo) {
-      window.shuoshuoComment.destroyValine = () => {
-        if (el.children.length) {
-          el.innerHTML = ''
-          el.classList.add('no-comment')
-        }
-      }
-    }
+<div class="article-footer slide-up">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section></div>
 
-    const valineConfig = {
-      el: '#vcomment',
-      appId: 'sq3wVI8fj6VJ6fUKlDmjWLI9-gzGzoHsz',
-      appKey: '1GPTY2QZUaWKMSLXg7UYXhQe',
-      avatar: 'identicon',
-      serverURLs: '',
-      emojiMaps: {"tv_doge":"tv_doge.png","tv_亲亲":"tv_qinqin.png","tv_偷笑":"tv_touxiao.png","tv_再见":"tv_zaijian.png","tv_冷漠":"tv_lengmo.png","tv_发怒":"tv_fanu.png","tv_发财":"tv_facai.png","tv_可爱":"tv_keai.png","tv_吐血":"tv_tuxue.png","tv_呆":"tv_dai.png","tv_呕吐":"tv_outu.png","tv_困":"tv_kun.png","tv_坏笑":"tv_huaixiao.png","tv_大佬":"tv_dalao.png","tv_大哭":"tv_daku.png","tv_委屈":"tv_weiqu.png","tv_害羞":"tv_haixiu.png","tv_尴尬":"tv_ganga.png","tv_微笑":"tv_weixiao.png","tv_思考":"tv_sikao.png","tv_惊吓":"tv_jingxia.png","tv_打脸":"tv_dalian.png","tv_抓狂":"tv_zhuakuang.png","tv_抠鼻":"tv_koubi.png","tv_斜眼笑":"tv_xieyanxiao.png","tv_无奈":"tv_wunai.png","tv_流汗":"tv_liuhan.png","tv_流鼻血":"tv_liubixue.png","tv_点赞":"tv_dianzan.png","tv_生气":"tv_shengqi.png","tv_生病":"tv_shengbing.png","tv_白眼":"tv_baiyan.png","tv_皱眉":"tv_zhoumei.png","tv_目瞪口呆":"tv_mudengkoudai.png","tv_睡着":"tv_shuizhe.png","tv_笑哭":"tv_xiaoku.png","tv_腼腆":"tv_miantian.png","tv_色":"tv_se.png","tv_调侃":"tv_tiaokan.png","tv_调皮":"tv_tiaopi.png","tv_鄙视":"tv_bishi.png","tv_闭嘴":"tv_bizui.png","tv_难过":"tv_nanguo.png","tv_馋":"tv_chan.png","tv_鬼脸":"tv_guilian.png","tv_黑人问号":"tv_heirenwenhao.png","tv_鼓掌":"tv_guzhang.png"},
-      visitor: false,
-      ...option,
-      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
-    }
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章 <svg class="icon" viewBox="0 0 1 1" data-icon="default:arrow-right" aria-hidden="true"></svg></div><a href="/posts/288c757f/">BUAA-ML 2025-2026春季试题回忆版</a></div></section></div>
 
-    new Valine(valineConfig)
-  }
 
-  const loadValine = async (el, path) => {
-    if (typeof Valine === 'function') {
-      initValine(el, path)
-    } else {
-      await btf.getScript('https://cdn.jsdelivr.net/npm/valine@1.5.3/dist/Valine.min.js')
-      initValine(el, path)
-    }
-  }
 
-  if (isShuoshuo) {
-    'Valine' === 'Valine'
-      ? window.shuoshuoComment = { loadComment: loadValine }
-      : window.loadOtherComment = loadValine
-    return
-  }
 
-  if ('Valine' === 'Valine' || !false) {
-    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
-    else setTimeout(loadValine, 0)
-  } else {
-    window.loadOtherComment = loadValine
-  }
-})()</script></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="false"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>(() => {
-  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
-  window.pjax = new Pjax({
-    elements: 'a:not([target="_blank"])',
-    selectors: pjaxSelectors,
-    cacheBust: false,
-    analytics: false,
-    scrollRestoration: false
-  })
 
-  const triggerPjaxFn = (val) => {
-    if (!val) return
-    Object.values(val).forEach(fn => {
-      try {
-        fn()
-      } catch (err) {
-        console.debug('Pjax callback failed:', err)
-      }
-    })
-  }
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">LanC1oud</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/2.0.0">Stellar 2.0.0</a> 主题创建。<br>
+本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+</main>
+<aside data-stellar-runtime-region="" id="rightbar-region" class="site-region site-region--rightbar" data-region="rightbar" aria-label="Rightbar"><div class="site-region__surface ui-drawer-surface"><div class="site-region__viewport"><div class="widgets widget-stack widget-stack--rightbar widget-stack--rightbar"><div class="widget-instance widget-instance--toc" data-widget-id="rightbar:1:toc" data-presentation="rightbar">
 
-  document.addEventListener('pjax:send', () => {
-    // removeEventListener
-    btf.removeGlobalFnEvent('pjaxSendOnce')
-    btf.removeGlobalFnEvent('themeChange')
 
-    // reset readmode
-    const $bodyClassList = document.body.classList
-    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+<widget class="widget-wrapper slide-up toc" id="data-toc" collapse="false">
+  
+    <div class="widget-header dis-select">
+      <span class="name">本文目录</span>
+      <button type="button" class="cap-action ui-interactive card-hover card-hover--spotlight" data-shell-action="toggle-toc" aria-label="Toggle table of contents" aria-pressed="false"><span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"></path></svg></span></button>
+    </div>
+  
+  <div class="widget-body"><ol class="toc ui-collection-adapter"><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#Week-1"><span class="toc-text">Week 1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="toc-text">C语言中的对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E7%B1%BB%E5%9E%8B"><span class="toc-text">类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#Week-2"><span class="toc-text">Week 2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E5%88%86%E9%85%8D%E5%AF%B9%E8%B1%A1"><span class="toc-text">分配对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#%E5%AF%B9%E8%B1%A1%E6%A0%87%E8%AF%86%E7%AC%A6%E5%AE%9A%E4%B9%89"><span class="toc-text">对象标识符定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#%E5%AF%B9%E8%B1%A1%E5%85%AD%E5%85%83%E7%BB%84%E6%A8%A1%E5%9E%8B"><span class="toc-text">对象六元组模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#%E9%80%9A%E8%BF%87%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AD%97%E9%9D%A2%E9%87%8F-String-Literal"><span class="toc-text">通过字符串字面量(String Literal)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#%E9%80%9A%E8%BF%87%E5%A4%8D%E5%90%88%E5%AD%97%E9%9D%A2%E9%87%8F-Compound-Literal"><span class="toc-text">通过复合字面量(Compound Literal)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#%E9%80%9A%E8%BF%87%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-text">通过内存管理函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E5%AE%9A%E4%BD%8D%E5%AF%B9%E8%B1%A1"><span class="toc-text">定位对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#Week-3"><span class="toc-text">Week 3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E5%B8%B8%E9%87%8F-Constant"><span class="toc-text">常量(Constant)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#%E6%95%B4%E6%95%B0%E5%B8%B8%E9%87%8F"><span class="toc-text">整数常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E5%B8%B8%E9%87%8F"><span class="toc-text">浮点数常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#%E6%9E%9A%E4%B8%BE%E5%B8%B8%E9%87%8F"><span class="toc-text">枚举常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#%E5%AD%97%E7%AC%A6%E5%B8%B8%E9%87%8F"><span class="toc-text">字符常量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link ui-interactive" href="#%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81"><span class="toc-text">字符编码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link ui-interactive" href="#%E5%9F%BA%E6%9C%AC%E6%BA%90%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%89%A7%E8%A1%8C%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="toc-text">基本源字符集和基本执行字符集</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#%E9%A2%84%E5%AE%9A%E4%B9%89%E5%B8%B8%E9%87%8F"><span class="toc-text">预定义常量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E6%8B%AC%E5%8F%B7%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">括号表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#lvalue%E6%B1%82%E5%80%BC%E7%9A%84%E5%9C%BA%E6%99%AF%E5%B7%AE%E5%BC%82"><span class="toc-text">lvalue求值的场景差异</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#Week-4"><span class="toc-text">Week 4</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E9%80%92%E5%BD%92%E6%B1%82%E5%80%BC%E6%9C%BA%E5%88%B6"><span class="toc-text">表达式的递归求值机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">后缀表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#%E4%B8%80%E5%85%83%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">一元表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#%E8%B5%8B%E5%80%BC%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">赋值表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#typeof%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">typeof运算符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E4%BB%80%E4%B9%88%E6%98%AFLocator-Value"><span class="toc-text">什么是Locator Value?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E5%AE%9A%E4%BD%8D%E9%9D%9E%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E7%9A%84lvalue%E7%9A%84%E6%B1%82%E5%80%BC%E8%A7%84%E5%88%99"><span class="toc-text">定位非数组对象的lvalue的求值规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#%E5%AF%B9%E8%B1%A1%E6%A0%87%E8%AF%86%E7%AC%A6%E7%9A%84%E6%B1%82%E5%80%BC%E7%A4%BA%E4%BE%8B"><span class="toc-text">对象标识符的求值示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#a-2-vs-a-a-2"><span class="toc-text">a+=2 vs. a=a+2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#%E4%BB%8Eint-a%E8%A7%82%E5%AF%9Fconst-int-a"><span class="toc-text">从int a观察const int a</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E5%AE%9A%E4%BD%8D%E6%99%AE%E9%80%9A%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E7%9A%84lvalue%E7%9A%84%E6%B1%82%E5%80%BC%E8%A7%84%E5%88%99"><span class="toc-text">定位普通数组对象的lvalue的求值规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B1%82%E5%80%BC%E7%A4%BA%E4%BE%8B"><span class="toc-text">数组对象的求值示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#%E5%8F%AF%E4%BF%AE%E6%94%B9%E5%B7%A6%E5%80%BC-vs-%E4%B8%8D%E5%8F%AF%E4%BF%AE%E6%94%B9%E5%B7%A6%E5%80%BC"><span class="toc-text">可修改左值 vs. 不可修改左值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AD%97%E9%9D%A2%E9%87%8F%E7%9A%84%E6%B1%82%E5%80%BC"><span class="toc-text">字符串字面量的求值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E5%A4%8D%E5%90%88%E5%AD%97%E9%9D%A2%E9%87%8F%E7%9A%84%E6%B1%82%E5%80%BC"><span class="toc-text">复合字面量的求值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E7%90%86%E8%A7%A3sizeof%E5%92%8C"><span class="toc-text">理解sizeof和&amp;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E5%AE%9A%E4%BD%8D%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B%E5%AF%B9%E8%B1%A1%E7%9A%84lvalue%E7%9A%84%E6%B1%82%E5%80%BC"><span class="toc-text">定位指针类型对象的lvalue的求值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#exp%E5%BD%A2%E5%BC%8F%E7%9A%84lvalue"><span class="toc-text">*exp形式的lvalue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E6%8C%87%E9%92%88%E7%AE%97%E6%9C%AF%EF%BC%9Ap-n"><span class="toc-text">指针算术：p+n</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E5%8D%95%E9%80%89%E9%A2%98"><span class="toc-text">单选题</span></a></li></ol></li></ol></div>
+  <div class="widget-footer"><a class="top ui-interactive" onclick="util.scrollTop()"><span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" d="M20.536 3.464C22 4.93 22 7.286 22 12s0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12s0-7.071 1.464-8.536C4.93 2 7.286 2 12 2s7.071 0 8.535 1.464" opacity=".5"></path><path fill="currentColor" d="M9.53 12.03a.75.75 0 0 1-1.06-1.06l3-3a.75.75 0 0 1 1.06 0l3 3a.75.75 0 1 1-1.06 1.06L12 9.56z"></path><path fill="currentColor" d="M9.53 16.03a.75.75 0 0 1-1.06-1.06l3-3a.75.75 0 0 1 1.06 0l3 3a.75.75 0 1 1-1.06 1.06L12 13.56z"></path></svg></span><span>回到顶部</span></a></div>
+</widget>
 
-    triggerPjaxFn(window.globalFn.pjaxSend)
-  })
 
-  document.addEventListener('pjax:complete', () => {
-    btf.removeGlobalFnEvent('pjaxCompleteOnce')
-    document.querySelectorAll('script[data-pjax]').forEach(item => {
-      const newScript = document.createElement('script')
-      const content = item.text || item.textContent || item.innerHTML || ""
-      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-      newScript.appendChild(document.createTextNode(content))
-      item.parentNode.replaceChild(newScript, item)
-    })
+</div></div></div></div></aside>
+</div><button type="button" class="site-scrim" data-shell-action="dismiss-drawer" aria-label="Close navigation" tabindex="-1"></button><div data-stellar-runtime-region="" class="site-dock" role="group" aria-label="Layout panels">
+  <button type="button" class="site-dock__button site-dock__button--rightbar ui-interactive" aria-label="Open rightbar" aria-controls="rightbar-region" aria-expanded="false" data-shell-action="toggle-rightbar-drawer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"></path></svg>
+  </button>
+  <button type="button" class="site-dock__button site-dock__button--leftbar ui-interactive" aria-label="Open leftbar" aria-controls="leftbar-region" aria-expanded="false" data-shell-action="toggle-leftbar-drawer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"></path><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"></path></g></svg>
+  </button>
+</div>
+</div><div class="site-scripts">
+<script data-stellar-script="core" src="/js/stellar-icons.js?v=39c6ac17e854ffe2"></script>
 
-    triggerPjaxFn(window.globalFn.pjaxComplete)
-  })
+<script data-stellar-script="defines">
+  window.canonical = window.stellarClientData.canonical;
+  const ctx = window.stellarClientData.ctx;
+  window.canonical.param = {permalink: "http://lanc1oud.top/posts/47e0d445", checklink: ctx.services.video.js};
+  ctx.date_suffix = {"just":"刚刚","min":"分钟前","hour":"小时前","day":"天前"};
+  if (ctx.search) Object.assign(ctx.search, {"more":"更多","no_more":"没有更多了"});
+  const def = window.stellarClientData.def;
+  window.ctx = ctx;
+  window.def = def;
+</script>
 
-  document.addEventListener('pjax:error', e => {
-    if (e.request.status === 404) {
-      const usePjax = true
-      true
-        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
-        : window.location.href = e.request.responseURL
-    }
-  })
-})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+
+<!-- core: 迁移期 DOM/资源兼容工具；Extension 注册与生命周期由 ESM runtime 所有 -->
+<script data-stellar-script="core" src="/js/utils.js?v=2.0.0"></script>
+<script data-stellar-script="core" src="/js/main.js?v=2.0.0" defer=""></script>
+<script data-stellar-script="core" defer="" src="/js/profile.js?v=2.0.0"></script>
+
+
+
+
+
+<script data-stellar-script="core" type="application/json" id="stellar-runtime-config">{"version":1,"root":"/","policy":{"cache":{"enabled":true,"defaultTtl":3600,"ttl":{"giscus":600,"waline":600,"artalk":600,"memos":600,"memos-user":86400,"sites":86400,"friends":86400,"friends_and_posts":86400,"siteinfo":86400},"maxEntries":200},"request":{"retries":2,"timeoutMs":5000,"idleTimeoutMs":3000,"maxCacheEntryBytes":204800},"features":{"codeCopyToastMs":2500},"providers":{"linkPrefetch":"flying_pages","lightbox":"fancybox","diagrams":"mermaid"}},"extensions":[{"id":"pin-slider","module":"/js/runtime/extensions/pin-slider.js","scope":"region","when":{"selector":".pin-slider"},"config":{}},{"id":"page-controls","module":"/js/runtime/extensions/page-controls.js","scope":"region","when":{"always":true},"config":{"highlight":"/js/search/highlight.js","tagtree":"/js/tagtree.js"}},{"id":"partial-navigation","module":"/js/runtime/extensions/partial-navigation.js","scope":"document","when":{"always":true},"config":{}},{"id":"search","module":"/js/runtime/extensions/search.js","scope":"document","when":{"selector":".search-input"},"config":{"provider":"local","options":{"scope":"all","includeContent":true,"cacheTtlSeconds":86400},"assets":{"client":null,"provider":"/js/search/local-search.js","shortcut":"/js/search/shortcut.js"}}},{"id":"hero-parallax","module":"/js/runtime/extensions/hero-parallax.js","scope":"region","when":{"selector":".wiki-hero"},"config":{}},{"id":"hero-effect","module":"/js/runtime/extensions/hero-effect.js","scope":"region","when":{"selector":"canvas[data-hero-effect]"},"config":{}},{"id":"lazy-loading","module":"/js/runtime/extensions/lazy-loading.js","scope":"document","when":{"always":true},"config":{"asset":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"}},{"id":"deferred-icons","module":"/js/runtime/extensions/deferred-icons.js","scope":"region","when":{"selector":"svg.icon[data-icon]"},"config":{}},{"id":"dropdown","module":"/js/runtime/extensions/dropdown.js","scope":"region","when":{"selector":"details.dropdown"},"config":{}},{"id":"services","module":"/js/runtime/extensions/services.js","scope":"region","when":{"selector":"#artalk_container, #twikoo_container, #waline_container, .data-service, [class*='ds-'], a[cardlink], a[data-md-link][data-siteinfo-api], .site-card [data-siteinfo-api], .voice\u003eaudio, .video\u003evideo, .chat-file"},"config":{"marked":"https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js"}},{"id":"settings","module":"/js/runtime/extensions/settings.js","scope":"region","when":{"selector":".settings-page"},"config":{}},{"id":"link-prefetch","module":"/js/runtime/extensions/link-prefetch.js","scope":"document","when":{"always":true},"config":{"asset":"https://gcore.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"}},{"id":"lightbox","module":"/js/runtime/extensions/lightbox.js","scope":"region","when":{"selector":"[data-fancybox]:not(.error), .with-fancybox, .ds-memos, .timenode p\u003eimg"},"config":{"enabled":true,"selector":".timenode p\u003eimg","assets":{"localCss":"/css/plugins/fancybox.css","js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"}}},{"id":"reveal","module":"/js/runtime/extensions/reveal.js","scope":"region","when":{"selector":".slide-up"},"config":{"enabled":true,"duration":800,"interval":200,"distance":8,"blur":4}},{"id":"code-copy","module":"/js/runtime/extensions/code-copy.js","scope":"region","when":{"selector":".code"},"config":{"assets":{"js":"/js/plugins/copycode.js"},"messages":{"label":"复制","copied":"复制成功","denied":"未获得剪贴板权限","unsupported":"当前浏览器不支持剪贴板或页面不是 HTTPS"}}},{"id":"adaptive-text","module":"/js/runtime/extensions/adaptive-text.js","scope":"region","when":{"selector":"[data-text-adaptive]"},"config":{"assets":{"colorJs":"/js/color.js","js":"/js/plugins/adaptive-text.js"}}},{"id":"swiper","module":"/js/runtime/extensions/swiper.js","scope":"region","when":{"selector":"#swiper-api"},"config":{"assets":{"localCss":"/css/plugins/swiper.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js","css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css"}}}]}</script>
+<script data-stellar-script="core" type="module" src="/js/runtime/index.js?v=2.0.0&amp;runtime=1"></script>
+
+
+<!-- inject -->
+
+
+<script data-stellar-script="core" defer="" src="/js/navigation-init.js?v=2.0.0"></script>
+</div>
+
+<script type="application/json" id="stellar-navigation-config">{"collection":"[\"post\",\"post\"]","url":"http://lanc1oud.top/posts/47e0d445","signature":"d0b9a77fbc3498ae16953d585f2bb65d2986fe30d27379af49625a4ca1164c0f"}</script></body></html>
