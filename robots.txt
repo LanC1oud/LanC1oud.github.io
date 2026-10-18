@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/
+Disallow: /lib/
+Disallow: /vendors/
+Disallow: /fonts/
+
+Disallow: /README.md
+
+Sitemap: https://lanc1oud.top/sitemap.xml
+Sitemap: https://lanc1oud.top/baidu_sitemap.xml

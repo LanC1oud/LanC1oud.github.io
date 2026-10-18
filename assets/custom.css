@@ -1,0 +1,77 @@
+/* ===========================================================================
+   站点自定义样式（Stellar）
+   通过 _config.stellar.yml 的 inject.head_end 引入，加载在主题样式之后。
+   =========================================================================== */
+
+/* ---------- 一、文章卡片：加大内边距，缓解拥挤感 ---------- */
+/* 主题原值 .post-list .md-text { padding: 1rem }（窄屏 0.5rem 1rem） */
+
+.post-list .post-card .md-text {
+  padding: 1.9rem 1.9rem 1.75rem;
+}
+
+.post-list .post-card-wrap {
+  margin: 1.6rem 0;
+}
+
+.post-list .post-card {
+  min-height: 11rem;
+}
+
+.post-list .post-card .post-title {
+  margin-bottom: 0.9rem;
+  line-height: 1.35;
+}
+
+.post-list .post-card .excerpt p {
+  margin: 0.9em 0;
+  line-height: 1.75;
+}
+
+@media screen and (max-width: 768px) {
+  .post-list .post-card .md-text {
+    padding: 1.4rem 1.1rem;
+  }
+
+  .post-list .post-card-wrap {
+    margin: 1.1rem 0;
+  }
+
+  .post-list .post-card {
+    min-height: 0;
+  }
+}
+
+/* ===========================================================================
+   背景差异化：主页例外
+   ---------------------------------------------------------------------------
+   全局基线（在 _config.stellar.yml 的 appearance.backgrounds.page.backdrop）：
+       重模糊 60px + 200% 饱和度 + 75% 遮挡
+   主页（含分页 /page/N/，其正文带有 .post-list.post 标记）：
+       不模糊、不遮挡、原图色彩
+   用 :has() 判断，PJAX 切换页面时也会自动重新匹配。
+   =========================================================================== */
+body:has(.post-list.post)>.site-background .site-background__blur {
+  --blur-px: 5px;
+  --blur-sat: 70%;
+  --blur-bg: var(--bg-a20);
+}
+/* ===========================================================================
+   半透明面板：文章卡片 / 右侧栏动态卡片
+   ---------------------------------------------------------------------------
+   右侧栏原本就是 var(--bg-a50) + 玻璃模糊；文章卡片用的是不透明的 var(--card)。
+   这里把两者统一成同一套半透明玻璃效果。
+   想更透明就把 --bg-a50 换成 --bg-a35 / --bg-a20；想更实就 --bg-a60 / --bg-a75。
+   =========================================================================== */
+.post-list .post-card {
+  background-color: var(--bg-a50);
+  -webkit-backdrop-filter: saturate(100%) blur(16px);
+  backdrop-filter: saturate(100%) blur(16px);
+}
+
+/* 右侧栏面板：显式声明，保证与卡片同款（原本已是相同值） */
+.site-region--rightbar .site-region__surface.ui-drawer-surface:before {
+  background: var(--bg-a50);
+  -webkit-backdrop-filter: saturate(100%) blur(16px);
+  backdrop-filter: saturate(100%) blur(16px);
+}
