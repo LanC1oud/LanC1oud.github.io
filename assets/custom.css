@@ -153,3 +153,82 @@ body:has(.post-list.post)>.site-background .site-background__blur {
     gap: 12px;
   }
 }
+
+/* ===========================================================================
+   夜间模式切换按钮（右下角悬浮）
+   三态循环：跟随系统 → 浅色 → 深色
+   =========================================================================== */
+.scheme-toggle {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  background: var(--bg-a50);
+  -webkit-backdrop-filter: blur(12px) saturate(100%);
+  backdrop-filter: blur(12px) saturate(100%);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .15);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.scheme-toggle:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .22);
+}
+.scheme-toggle:active {
+  transform: scale(.96);
+}
+
+/* ===========================================================================
+   左侧栏：与文章卡片统一风格
+   ---------------------------------------------------------------------------
+   原本左侧栏底部有一层 inset:16px 的彩色径向渐变装饰（blur 10px），
+   和其它面板的「半透明玻璃」风格不一致。
+   这里关掉装饰层，并让面板本体使用与文章卡片相同的背景与模糊参数。
+   =========================================================================== */
+.site-region--leftbar .site-region__decoration {
+  display: none !important;
+}
+
+.site-region--leftbar .site-region__surface.ui-surface {
+  background-color: var(--bg-a20);
+  /* 渐变取自背景图本身的色调：左上深靛 → 右上墨绿 → 左下灰紫 */
+  background-image: linear-gradient(
+    165deg,
+    color-mix(in srgb, #262a40 34%, transparent) 0%,
+    color-mix(in srgb, #374947 26%, transparent) 45%,
+    color-mix(in srgb, #4e4b57 20%, transparent) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-backdrop-filter: saturate(100%) blur(16px);
+  backdrop-filter: saturate(100%) blur(16px);
+  border-radius: 24px;
+}
+
+/* ===========================================================================
+   顶部导航条 + 右侧动态卡片：与中间文章卡片统一
+   ---------------------------------------------------------------------------
+   两者原本都是不透明的 var(--card)（纯白/纯深色），
+   这里换成与文章卡片相同的：var(--bg-a50) + blur(16px) + saturate(100%) + 24px 圆角
+   =========================================================================== */
+.listing-nav__surface {
+  background-color: var(--bg-a50);
+  -webkit-backdrop-filter: saturate(100%) blur(16px);
+  backdrop-filter: saturate(100%) blur(16px);
+  border-radius: 24px;
+}
+
+.tag-plugin.timeline .body {
+  background-color: var(--bg-a50);
+  -webkit-backdrop-filter: saturate(100%) blur(16px);
+  backdrop-filter: saturate(100%) blur(16px);
+  border-radius: 24px;
+  border-top-left-radius: 24px;
+}
