@@ -9604,11 +9604,6 @@ html[data-leftbar-state='collapsed'] .site-shell:not([data-drawer='leftbar']) .s
   border-radius: 4px;
 }
 @media screen and (min-width: 1180px) {
-  .widget-wrapper.toc {
-    background: var(--background);
-  }
-}
-@media screen and (min-width: 1180px) {
   .site-region__surface .widget-wrapper.toc {
     background: none;
   }
@@ -12153,6 +12148,7 @@ body > .site-background {
   right: 0;
   bottom: 0;
   background-size: cover;
+  background-image: url("/img/bg.jpg");
 }
 body > .site-background .site-background__blur {
   width: 100%;
@@ -12161,8 +12157,8 @@ body > .site-background .site-background__blur {
   --blur-sat: 200%;
   background-color: var(--blur-bg);
   --blur-sat: 300%;
-  --blur-px: 100px;
-  --blur-bg: var(--bg-a75);
+  --blur-px: 0px;
+  --blur-bg: transparent;
 }
 @supports ((-webkit-backdrop-filter: blur(var(--blur-px))) or (backdrop-filter: blur(var(--blur-px)))) {
   body > .site-background .site-background__blur {
@@ -13452,7 +13448,7 @@ html[data-leftbar-state='collapsed'] .site-shell:not([data-drawer='leftbar']) .s
   right: var(--inset);
   border-radius: inherit;
   --saturate: 350%;
-  --blur-px: 100px;
+  --blur-px: 10px;
   --background-opacity: 1;
   --background-opacity: 1;
   filter: blur(var(--blur-px)) opacity(var(--background-opacity));
@@ -13485,7 +13481,7 @@ html[data-leftbar-state='collapsed'] .site-shell:not([data-drawer='leftbar']) .s
 @media screen and (min-width: 769px) {
   html[data-leftbar-state='collapsed'] .site-shell:not([data-drawer='leftbar']) .site-region--leftbar .site-region__decoration {
     --inset: 0px;
-    --blur-px: 50px;
+    --blur-px: 5px;
   }
 }
 :root[data-theme='dark'] .ui-interactive.has-hover-surface,

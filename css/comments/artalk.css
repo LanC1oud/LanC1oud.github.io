@@ -163,7 +163,7 @@ body[data-page-layout='index_wiki'] {
   --at-color-sub: var(--text-p3);
   --at-color-grey: var(--text-p4);
   --at-color-meta: var(--text-p4);
-  --at-color-border: var(--block-border);
+  --at-color-border: transparent;
   --at-color-light: var(--link);
   --at-color-bg: var(--card);
   --at-color-bg-transl: var(--card);
