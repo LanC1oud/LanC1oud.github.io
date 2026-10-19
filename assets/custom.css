@@ -232,3 +232,235 @@ body:has(.post-list.post)>.site-background .site-background__blur {
   border-radius: 24px;
   border-top-left-radius: 24px;
 }
+
+/* ===========================================================================
+   左侧栏品牌区：社交图标（GitHub / Steam / Bilibili）
+   由 /assets/brand-social.js 动态插入到头像与站名下方
+   =========================================================================== */
+.brand-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;                /* 图标间距 */
+  margin: 16px 0 6px;       /* 与上方站名、下方搜索框的距离 */
+}
+
+.brand-social__item {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: var(--text-p2);
+  background: transparent;
+  transition: color .18s ease;
+}
+
+.brand-social__item svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+/* 悬停：只换图标颜色，不加背景、不位移 */
+.brand-social__item:hover {
+  color: var(--theme);
+  background: transparent;
+}
+
+/* 点击：图标颜色再深一档，仍不加背景 */
+.brand-social__item:active {
+  color: var(--accent);
+  background: transparent;
+}
+
+/* 键盘聚焦可见 */
+.brand-social__item:focus-visible {
+  outline: 2px solid var(--theme);
+  outline-offset: 2px;
+}
+
+/* ===========================================================================
+   搜索栏：去掉渐变高光，改为极简样式
+   ---------------------------------------------------------------------------
+   主题的 .ui-interactive.has-hover-surface 会让搜索按钮常态就带一层
+   白到透明的渐变 + 内高光，这里覆盖为：常态透明、悬停纯色、无高光。
+   =========================================================================== */
+.site-region--leftbar .ui-interactive.search-trigger.has-hover-surface {
+  background: transparent;
+  box-shadow: none;
+  position: relative;              /* 供下方直线定位 */
+  transition: background .18s ease;
+}
+
+/* 底边直线：用伪元素画，不随圆角弯曲 */
+.site-region--leftbar .ui-interactive.search-trigger.has-hover-surface::after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 0;
+  height: 1px;
+  background: var(--bg-a50);
+  pointer-events: none;
+  transition: background .18s ease;
+}
+
+.site-region--leftbar .ui-interactive.search-trigger.has-hover-surface:hover,
+.site-region--leftbar .ui-interactive.search-trigger.has-hover-surface:focus-visible {
+  background: var(--bg-a20);
+}
+
+.site-region--leftbar .ui-interactive.search-trigger.has-hover-surface:hover::after,
+.site-region--leftbar .ui-interactive.search-trigger.has-hover-surface:focus-visible::after {
+  background: var(--theme);
+}
+
+/* 去掉鼠标跟随的聚光高光 */
+.site-region--leftbar .ui-interactive.search-trigger.has-hover-surface .card-hover__spotlight {
+  display: none;
+}
+
+/* ===========================================================================
+   左侧栏内联搜索（替代官方弹窗）
+   由 /assets/inline-search.js 注入到 .brand-search 内
+   =========================================================================== */
+
+/* 隐藏官方的弹窗触发按钮 */
+.site-region--leftbar .brand-search .search-trigger {
+  display: none !important;
+}
+
+.inline-search {
+  width: 100%;
+}
+
+.inline-search__bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  position: relative;
+}
+
+/* 底边直线（与之前一致，不随圆角弯曲） */
+.inline-search__bar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--bg-a50);
+  pointer-events: none;
+  transition: background .18s ease;
+}
+
+.inline-search:focus-within .inline-search__bar::after {
+  background: var(--theme);
+}
+
+.inline-search__icon {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  opacity: .55;
+  color: var(--text-p2);
+}
+
+.inline-search__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text-p1);
+  font: inherit;
+  font-size: calc(var(--fs-content-base) - 2px);
+  padding: 0;
+  line-height: 1.6;
+}
+
+.inline-search__input::placeholder {
+  color: var(--text-meta);
+}
+
+/* 去掉 type=search 自带的清除按钮 */
+.inline-search__input::-webkit-search-cancel-button,
+.inline-search__input::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.inline-search__hint {
+  flex: none;
+  font: inherit;
+  font-size: 11px;
+  color: var(--text-meta);
+  border: 0;
+  background: transparent;
+  white-space: nowrap;
+}
+
+/* 结果面板：正常文档流，左栏内部滚动 */
+.inline-search__panel {
+  margin-top: 6px;
+  max-height: 46vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.inline-search__item {
+  display: block;
+  padding: 9px 6px;
+  margin: 0;
+  border-radius: 0;
+  text-decoration: none;
+  color: var(--text-p1);
+  background: transparent;
+  border-bottom: 1px solid var(--bg-a50);   /* 条目之间用细线分隔 */
+  transition: background .15s ease, color .15s ease;
+}
+
+.inline-search__item:last-child {
+  border-bottom: 0;
+}
+
+.inline-search__item:hover,
+.inline-search__item.is-active {
+  background: var(--bg-a20);      /* 悬停/选中给一点淡底 */
+  color: var(--theme);
+}
+
+.inline-search__title {
+  font-size: calc(var(--fs-content-base) - 2px);
+  font-weight: 600;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inline-search__snippet {
+  margin-top: 2px;
+  font-size: calc(var(--fs-content-base) - 4px);
+  line-height: 1.5;
+  color: var(--text-p2);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.inline-search__item mark {
+  background: transparent;
+  color: var(--theme);
+  font-weight: 700;
+}
+
+.inline-search__empty {
+  padding: 10px;
+  font-size: calc(var(--fs-content-base) - 3px);
+  color: var(--text-meta);
+}
