@@ -62,7 +62,9 @@
   
 
   <script type="application/ld+json" data-stellar-page-meta="">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"LanC1oud","sameAs":[]},"dateCreated":"2026-06-27T16:41:23+08:00","dateModified":"2026-10-19T10:43:53+08:00","datePublished":"2026-06-27T16:41:23+08:00","description":"代码修改\n整个开发过程在 Lab6 现有代码基础之上进行，按功能模块逐步修改。\n1. 扩展 Env 结构体\n文件：include/env.h\n\n新增状态宏 ENV_ZOMBIE，值为 3。该状态表示线程已退出但控制块尚未释放，用于兼容并发等待。\n在 struct Env 中新增以下字段：\n\nu_int env_tgid：线程组 ID，主线程初次创建时与自己的 env_id 相同，其他线程继承...","headline":"BUAA-OS-Challenge Thread Model","mainEntityOfPage":{"@type":"WebPage","@id":"http://lanc1oud.top/posts/2426a238/"},"publisher":{"@type":"Organization","name":"LanC1oud","sameAs":[]},"url":"http://lanc1oud.top/posts/2426a238/","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"],"keywords":"BUAA-OS","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"}</script>
-  <link rel="stylesheet" href="/assets/custom.css">
+  <script src="/assets/bg-boot.js"></script>
+<link rel="stylesheet" href="/assets/custom.css">
+
 
   <link rel="stylesheet" href="/css/stellar-icons.css?v=7c185ad1a9a79674">
   <link rel="preload" as="script" href="/js/stellar-icons.js?v=39c6ac17e854ffe2">
@@ -197,32 +199,14 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
-<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;posts&#x2F;770953b4&#x2F;" title="Optimization Methods in Computer Engineering">
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;posts&#x2F;770953b4&#x2F;" title="Optimization in Computer Engineering">
   
   
   <span class="ui-collection__initial" aria-hidden="true">O</span>
   
     <span class="ui-collection__content">
       
-      <span class="ui-collection__title">Optimization Methods in Computer Engineering</span>
-      
-      
-    </span>
-  
-  
-  
-</a>
-
-  
-    
-<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;posts&#x2F;47e0d445&#x2F;" title="C语言系统级编程">
-  
-  
-  <span class="ui-collection__initial" aria-hidden="true">C</span>
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">C语言系统级编程</span>
+      <span class="ui-collection__title">Optimization in Computer Engineering</span>
       
       
     </span>
@@ -241,6 +225,24 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">Stellar常用标签测试</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;posts&#x2F;47e0d445&#x2F;" title="C语言系统级编程">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">C</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">C语言系统级编程</span>
       
       
     </span>
@@ -739,6 +741,7 @@
 <script src="/assets/brand-social.js" defer></script>
 <script src="/assets/inline-search.js" defer></script>
 <script src="/assets/search-highlight.js" defer></script>
+<script src="/assets/random-bg.js?v=4" defer></script>
 <script>
 (function () {
   var KEY = 'Stellar.colorScheme';

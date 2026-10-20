@@ -62,7 +62,9 @@
   
 
   <script type="application/ld+json" data-stellar-page-meta="">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"LanC1oud","sameAs":[]},"dateCreated":"2025-12-09T10:30:00+08:00","dateModified":"2026-10-19T10:43:58+08:00","datePublished":"2025-12-09T10:30:00+08:00","description":"设计草稿\n根据P5CPU设计，需要进行以下改变：\n\n乘除模块MDU，内带HI,LO两个寄存器。设置start,busy信号用于模拟多周期乘除法运算\nDE模块，用于实现LW,LH,LB指令\nBE模块，用于实现SW,SH,SB指令\n内存外置：将原IM和DM删除，并在mips主模块增加接口\n增加bne,slt等简单指令\n\n乘除法八条指令\nMDU模块\n注意 $signed 即可。\n123456789...","headline":"BUAA-CO P6设计文档","mainEntityOfPage":{"@type":"WebPage","@id":"http://lanc1oud.top/posts/a5b24d25/"},"publisher":{"@type":"Organization","name":"LanC1oud","sameAs":[]},"url":"http://lanc1oud.top/posts/a5b24d25/","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"],"keywords":"BUAA-CO","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"}</script>
-  <link rel="stylesheet" href="/assets/custom.css">
+  <script src="/assets/bg-boot.js"></script>
+<link rel="stylesheet" href="/assets/custom.css">
+
 
   <link rel="stylesheet" href="/css/stellar-icons.css?v=7c185ad1a9a79674">
   <link rel="preload" as="script" href="/js/stellar-icons.js?v=39c6ac17e854ffe2">
@@ -197,32 +199,14 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
-<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;posts&#x2F;770953b4&#x2F;" title="Optimization Methods in Computer Engineering">
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;posts&#x2F;770953b4&#x2F;" title="Optimization in Computer Engineering">
   
   
   <span class="ui-collection__initial" aria-hidden="true">O</span>
   
     <span class="ui-collection__content">
       
-      <span class="ui-collection__title">Optimization Methods in Computer Engineering</span>
-      
-      
-    </span>
-  
-  
-  
-</a>
-
-  
-    
-<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;posts&#x2F;47e0d445&#x2F;" title="C语言系统级编程">
-  
-  
-  <span class="ui-collection__initial" aria-hidden="true">C</span>
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">C语言系统级编程</span>
+      <span class="ui-collection__title">Optimization in Computer Engineering</span>
       
       
     </span>
@@ -241,6 +225,24 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">Stellar常用标签测试</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;posts&#x2F;47e0d445&#x2F;" title="C语言系统级编程">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">C</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">C语言系统级编程</span>
       
       
     </span>
@@ -664,6 +666,7 @@
 <script src="/assets/brand-social.js" defer></script>
 <script src="/assets/inline-search.js" defer></script>
 <script src="/assets/search-highlight.js" defer></script>
+<script src="/assets/random-bg.js?v=4" defer></script>
 <script>
 (function () {
   var KEY = 'Stellar.colorScheme';

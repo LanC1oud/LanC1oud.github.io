@@ -62,7 +62,9 @@
   
 
   <script type="application/ld+json" data-stellar-page-meta="">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"LanC1oud","sameAs":[]},"dateCreated":"2025-12-09T10:20:00+08:00","dateModified":"2026-10-19T10:43:53+08:00","datePublished":"2025-12-09T10:20:00+08:00","description":"设计草稿\n根据P4CPU设计，将CPU划分为F,D,E,M,W五级。\n前置准备\n由于延迟槽的存在，需将mips主模块中的PCplus4改为PCplus8.\n模块层面\nController\n为了使每一级都能及时读取Controller传递出的信号，可以在每一级都设置一个单独的Controller模块。\n同时，在Controller模块中定义每个指令的t_rs,t_rt,t数值\n\n\n\n指令\ntr...","headline":"BUAA-CO P5设计文档","mainEntityOfPage":{"@type":"WebPage","@id":"http://lanc1oud.top/posts/187821eb/"},"publisher":{"@type":"Organization","name":"LanC1oud","sameAs":[]},"url":"http://lanc1oud.top/posts/187821eb/","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"],"keywords":"BUAA-CO","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"}</script>
-  <link rel="stylesheet" href="/assets/custom.css">
+  <script src="/assets/bg-boot.js"></script>
+<link rel="stylesheet" href="/assets/custom.css">
+
 
   <link rel="stylesheet" href="/css/stellar-icons.css?v=7c185ad1a9a79674">
   <link rel="preload" as="script" href="/js/stellar-icons.js?v=39c6ac17e854ffe2">
@@ -197,32 +199,14 @@
   <div class="widget-body"><div class="ui-collection" data-layout="list" data-variant="nav" data-density="compact">
   
     
-<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;posts&#x2F;770953b4&#x2F;" title="Optimization Methods in Computer Engineering">
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;posts&#x2F;770953b4&#x2F;" title="Optimization in Computer Engineering">
   
   
   <span class="ui-collection__initial" aria-hidden="true">O</span>
   
     <span class="ui-collection__content">
       
-      <span class="ui-collection__title">Optimization Methods in Computer Engineering</span>
-      
-      
-    </span>
-  
-  
-  
-</a>
-
-  
-    
-<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;posts&#x2F;47e0d445&#x2F;" title="C语言系统级编程">
-  
-  
-  <span class="ui-collection__initial" aria-hidden="true">C</span>
-  
-    <span class="ui-collection__content">
-      
-      <span class="ui-collection__title">C语言系统级编程</span>
+      <span class="ui-collection__title">Optimization in Computer Engineering</span>
       
       
     </span>
@@ -241,6 +225,24 @@
     <span class="ui-collection__content">
       
       <span class="ui-collection__title">Stellar常用标签测试</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;posts&#x2F;47e0d445&#x2F;" title="C语言系统级编程">
+  
+  
+  <span class="ui-collection__initial" aria-hidden="true">C</span>
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">C语言系统级编程</span>
       
       
     </span>
@@ -843,6 +845,7 @@
 <script src="/assets/brand-social.js" defer></script>
 <script src="/assets/inline-search.js" defer></script>
 <script src="/assets/search-highlight.js" defer></script>
+<script src="/assets/random-bg.js?v=4" defer></script>
 <script>
 (function () {
   var KEY = 'Stellar.colorScheme';

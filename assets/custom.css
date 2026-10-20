@@ -198,13 +198,21 @@ body:has(.post-list.post)>.site-background .site-background__blur {
 
 .site-region--leftbar .site-region__surface.ui-surface {
   background-color: var(--bg-a20);
-  /* 渐变取自背景图本身的色调：左上深靛 → 右上墨绿 → 左下灰紫 */
-  background-image: linear-gradient(
-    165deg,
-    color-mix(in srgb, #262a40 34%, transparent) 0%,
-    color-mix(in srgb, #374947 26%, transparent) 45%,
-    color-mix(in srgb, #4e4b57 20%, transparent) 100%
-  );
+  /* 渐变色调由 random-bg.js 从当前背景图提取，写入 --bg-tint-a/b/c；
+     变量未设置时回退到原来的固定色调。
+     提高不透明度 + 右上角加一层光晕，让左栏更“有颜色”但不影响文字可读性 */
+  background-image:
+    radial-gradient(
+      130% 85% at 88% -8%,
+      color-mix(in srgb, var(--bg-tint-c, #374947) 20%, transparent) 0%,
+      transparent 62%
+    ),
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--bg-tint-a, #262a40) 36%, transparent) 0%,
+      color-mix(in srgb, var(--bg-tint-b, #374947) 28%, transparent) 46%,
+      color-mix(in srgb, var(--bg-tint-c, #4e4b57) 22%, transparent) 100%
+    );
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-backdrop-filter: saturate(100%) blur(16px);
@@ -463,4 +471,17 @@ body:has(.post-list.post)>.site-background .site-background__blur {
   padding: 10px;
   font-size: calc(var(--fs-content-base) - 3px);
   color: var(--text-meta);
+}
+
+/* ===========================================================================
+   随机背景图（由 /assets/random-bg.js 设置）
+   仅当脚本成功取到图片时才生效，否则保留 _config.stellar.yml 里的固定背景
+   =========================================================================== */
+html.has-random-bg > body > .site-background {
+  background-image: var(--stellar-bg-url) !important;
+}
+
+/* 背景切换时给一点过渡，避免生硬 */
+body > .site-background {
+  transition: background-image .45s ease-in-out;
 }
