@@ -290,6 +290,13 @@
 
   
   <url>
+    <loc>http://lanc1oud.top/tags/BUAA-CO/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://lanc1oud.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -304,6 +311,13 @@
   </url>
   
   <url>
+    <loc>http://lanc1oud.top/tags/BUAA-OS/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://lanc1oud.top/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -311,7 +325,7 @@
   </url>
   
   <url>
-    <loc>http://lanc1oud.top/tags/BUAA-OS/</loc>
+    <loc>http://lanc1oud.top/tags/C-C/</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -325,13 +339,6 @@
   </url>
   
   <url>
-    <loc>http://lanc1oud.top/tags/BUAA-CO/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://lanc1oud.top/tags/Optimization/</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -339,7 +346,7 @@
   </url>
   
   <url>
-    <loc>http://lanc1oud.top/tags/C-C/</loc>
+    <loc>http://lanc1oud.top/tags/HelloWorld/</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -354,13 +361,6 @@
   
   <url>
     <loc>http://lanc1oud.top/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://lanc1oud.top/tags/HelloWorld/</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

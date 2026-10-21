@@ -500,7 +500,7 @@ body > .site-background {
   display: none !important;
 }
 .site-region--leftbar .settings-widget {
-  justify-content: center;
+  justify-content: flex-start;   /* 只留图标时保持在左侧 */
 }
 
 /* 折叠动画 */
@@ -508,8 +508,8 @@ body > .site-background {
   transition: width .28s cubic-bezier(.4, 0, .2, 1);
 }
 
-/* 折叠时紧贴最左侧 */
-html[data-leftbar-state='collapsed'] .site-shell:not([data-drawer='leftbar']) .site-region--leftbar {
+/* 始终保持左对齐：展开与折叠的锚点一致，宽度变化不会从右侧“长出”来 */
+.site-region--leftbar {
   justify-self: start;
   margin-inline-start: 0;
 }
