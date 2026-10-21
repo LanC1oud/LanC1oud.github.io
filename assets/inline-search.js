@@ -205,6 +205,18 @@
       try { sessionStorage.setItem('stellar.searchKeyword', input.value.trim()); } catch (err) { /* 忽略 */ }
     });
 
+    // 折叠态下搜索只剩图标：点它先展开左栏，再聚焦输入框
+    var iconEl = box.querySelector('.inline-search__icon');
+    if (iconEl) {
+      iconEl.addEventListener('click', function () {
+        var collapsed = document.documentElement.getAttribute('data-leftbar-state') === 'collapsed';
+        if (!collapsed) { input.focus(); return; }
+        var toggle = document.querySelector('.leftbar-state-toggle');
+        if (toggle) toggle.click();
+        setTimeout(function () { loadIndex(); input.focus(); }, 320);
+      });
+    }
+
     document.addEventListener('click', function (e) {
       if (!box.contains(e.target)) closePanel();
     });

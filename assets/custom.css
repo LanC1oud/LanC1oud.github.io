@@ -485,3 +485,77 @@ html.has-random-bg > body > .site-background {
 body > .site-background {
   transition: background-image .45s ease-in-out;
 }
+
+/* ===========================================================================
+   左侧栏折叠体验优化
+   ---------------------------------------------------------------------------
+   1) 隐藏“设置”文字，只留图标
+   2) 折叠时改为左对齐（主题默认 justify-self: end 会把它推到列右侧）
+   3) 折叠态下社交图标改为竖排、搜索框改为图标按钮
+   4) 折叠/展开加过渡
+   =========================================================================== */
+
+/* 设置项：只保留图标 */
+.site-region--leftbar .settings-widget__name {
+  display: none !important;
+}
+.site-region--leftbar .settings-widget {
+  justify-content: center;
+}
+
+/* 折叠动画 */
+.site-region--leftbar {
+  transition: width .28s cubic-bezier(.4, 0, .2, 1);
+}
+
+/* 折叠时紧贴最左侧 */
+html[data-leftbar-state='collapsed'] .site-shell:not([data-drawer='leftbar']) .site-region--leftbar {
+  justify-self: start;
+  margin-inline-start: 0;
+}
+
+/* 折叠态：社交图标竖排 */
+html[data-leftbar-state='collapsed'] .site-shell:not([data-drawer='leftbar']) .brand-social {
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px 0 6px;
+}
+
+html[data-leftbar-state='collapsed'] .site-shell:not([data-drawer='leftbar']) .brand-social__item {
+  width: 32px;
+  height: 32px;
+}
+
+html[data-leftbar-state='collapsed'] .site-shell:not([data-drawer='leftbar']) .brand-social__item svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* 折叠态：搜索改为纯图标按钮 */
+html[data-leftbar-state='collapsed'] .site-shell:not([data-drawer='leftbar']) .inline-search__bar {
+  justify-content: center;
+  padding: 8px 0;
+}
+
+html[data-leftbar-state='collapsed'] .site-shell:not([data-drawer='leftbar']) .inline-search__input,
+html[data-leftbar-state='collapsed'] .site-shell:not([data-drawer='leftbar']) .inline-search__hint,
+html[data-leftbar-state='collapsed'] .site-shell:not([data-drawer='leftbar']) .inline-search__panel {
+  display: none;
+}
+
+html[data-leftbar-state='collapsed'] .site-shell:not([data-drawer='leftbar']) .inline-search__icon {
+  width: 18px;
+  height: 18px;
+  opacity: .75;
+  cursor: pointer;
+}
+
+/* 展开时让内容跟随宽度变化，避免跳变 */
+.brand-social,
+.inline-search__bar,
+.site-region--leftbar .ui-collection__item {
+  transition: width .28s cubic-bezier(.4, 0, .2, 1),
+              gap .28s cubic-bezier(.4, 0, .2, 1),
+              margin .28s cubic-bezier(.4, 0, .2, 1),
+              padding .28s cubic-bezier(.4, 0, .2, 1);
+}
