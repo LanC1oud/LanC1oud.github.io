@@ -500,7 +500,14 @@ body > .site-background {
   display: none !important;
 }
 .site-region--leftbar .settings-widget {
-  justify-content: flex-start;   /* 只留图标时保持在左侧 */
+  /* 按钮尺寸与图标一致，不再拉成整行长条 */
+  width: 32px;
+  min-width: 32px;
+  max-width: 32px;
+  padding: 0;
+  border-radius: 50%;
+  corner-shape: round;
+  justify-content: center;
 }
 
 /* 折叠动画 */
@@ -508,10 +515,11 @@ body > .site-background {
   transition: width .28s cubic-bezier(.4, 0, .2, 1);
 }
 
-/* 始终保持左对齐：展开与折叠的锚点一致，宽度变化不会从右侧“长出”来 */
+/* 始终保持左对齐：展开与折叠的锚点一致，宽度变化不会从右侧“长出”来
+   再补一点左边距，避免紧贴屏幕边缘 */
 .site-region--leftbar {
   justify-self: start;
-  margin-inline-start: 0;
+  margin-inline-start: var(--leftbar-gap, 1rem);
 }
 
 /* 折叠态：社交图标竖排 */
