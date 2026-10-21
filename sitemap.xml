@@ -191,24 +191,6 @@
   </url>
   
   <url>
-    <loc>http://lanc1oud.top/wiki/handbook/formula/</loc>
-    
-    <lastmod>2026-10-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lanc1oud.top/wiki/handbook/diagram/</loc>
-    
-    <lastmod>2026-10-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://lanc1oud.top/tags/</loc>
     
     <lastmod>2026-10-18</lastmod>
@@ -353,13 +335,6 @@
   </url>
   
   <url>
-    <loc>http://lanc1oud.top/tags/HelloWorld/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://lanc1oud.top/tags/%E7%82%BD%E5%90%BE%E7%94%9F%E5%B9%B3/</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -368,6 +343,13 @@
   
   <url>
     <loc>http://lanc1oud.top/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://lanc1oud.top/tags/HelloWorld/</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
