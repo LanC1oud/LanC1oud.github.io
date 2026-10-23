@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="用可行域、单纯形表与逐步枢轴运算，理解单纯形法如何沿顶点走到最优解。">
+  <title>沿着顶点，走向最优 · 单纯形法动画</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script>if (new URLSearchParams(location.search).get('embed') === '1') document.documentElement.classList.add('embedded');</script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="embed.css">
+  <script defer src="simplex.js"></script>
+</head>
+<body>
+  <main>
+    <nav class="topbar" aria-label="页面导航"><a href="../../posts/770953b4/">← 返回文章</a><span>OPTIMIZATION NOTES <i>/</i> 01</span><span class="small-tag">交互式演示</span></nav>
+    <header class="intro">
+      <div><p class="eyebrow">THE SIMPLEX METHOD</p><h1>沿着顶点，<em>走向最优。</em></h1><p class="subtitle">一次换基，一段前进。把几何直觉与单纯形表放在一起看。</p></div>
+      <div class="model" aria-label="线性规划模型"><strong>max <span>z = 2x + y</span></strong><p>5y ≤ 15　·　6x + 2y ≤ 24</p><p>x + y ≤ 5　·　x, y ≥ 0</p></div>
+    </header>
+    <section class="player" aria-label="动画控制">
+      <div class="embed-heading"><strong>单纯形法</strong><span>max z = 2x + y</span></div>
+      <div class="control-row"><div class="buttons"><button id="play" class="primary" aria-label="自动播放">▶ 自动播放</button><button id="prev" aria-label="上一步">←</button><button id="next" aria-label="下一步">→</button><button id="reset" class="text-button">↺ 重播</button></div><div class="play-meta"><label>速度 <select id="speed" aria-label="播放速度"><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option><option value="0.5">0.5×</option></select></label><span id="step-count">01 / 10</span></div></div>
+      <div id="timeline" class="timeline" role="group" aria-label="选择演示步骤"></div>
+    </section>
+    <div class="view-switch" role="group" aria-label="选择图解或单纯形表"><button type="button" data-view="geometry" aria-pressed="true">几何图解</button><button type="button" data-view="algebra" aria-pressed="false">单纯形表</button></div>
+    <section class="workspace" aria-label="单纯形法演示">
+      <article class="panel geometry">
+        <div class="panel-heading"><div><span class="section-number">01</span><h2>在可行域上前进</h2></div><span class="live-tag" id="iteration">初始解</span></div>
+        <div class="chart-wrap"><svg id="chart" viewBox="0 0 520 365" role="img" aria-labelledby="chart-title chart-desc"><title id="chart-title">线性规划可行域与迭代路径</title><desc id="chart-desc">可行域顶点为 (0,0)、(4,0)、(3.5,1.5)、(2,3)、(0,3)。单纯形法沿 (0,0) 到 (4,0) 再到 (3.5,1.5)，目标值从 0 提高到 8.5。</desc><defs><clipPath id="plot-clip"><rect x="50" y="28" width="430" height="280"/></clipPath><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#23816b"/></marker></defs><g id="plot-static"></g><g clip-path="url(#plot-clip)"><line id="objective" class="objective"/><path id="route" class="route"/><circle id="point-halo" r="15" class="point-halo"/><circle id="point" r="6" class="point"/></g><g id="point-label"></g></svg></div>
+        <div class="legend"><span><i class="swatch feasible"></i>可行域</span><span><i class="swatch line"></i>目标等值线</span><span><i class="swatch path"></i>迭代路径</span></div>
+        <div class="metrics"><div><span>当前基本可行解</span><strong id="coordinates">(0, 0)</strong></div><div><span>目标函数 z = 2x + y</span><strong id="value">0</strong></div></div>
+      </article>
+      <article class="panel algebra">
+        <div class="panel-heading"><div><span class="section-number">02</span><h2>在单纯形表中换基</h2></div><span class="live-tag" id="table-status">初始表</span></div>
+        <p class="table-convention">目标行采用 <b>z − 2x − y = 0</b>，负系数表示仍可改进。</p>
+        <div class="table-scroll"><table id="tableau" aria-label="当前单纯形表"></table></div>
+        <div class="table-key"><span><i class="key entering"></i>进基列</span><span><i class="key leaving"></i>离基行</span><span><i class="key pivot"></i>枢轴元素</span></div>
+        <div class="basis-strip"><span>当前基 <b id="basis">s₁, s₂, s₃</b></span><span>非基变量 <b id="nonbasis">x, y = 0</b></span></div>
+        <p class="slack-note">松弛变量：5y + s₁ = 15，6x + 2y + s₂ = 24，x + y + s₃ = 5。</p>
+      </article>
+    </section>
+    <section class="explanation" aria-live="polite" aria-atomic="true"><div class="step-icon" id="step-icon">0</div><div><p class="eyebrow" id="stage-label">START / 初始基本可行解</p><h2 id="stage-title">从原点出发</h2><p id="stage-description"></p><div class="operation" id="operation"></div></div></section>
+    <footer><span>同一例题 · 两次换基 · 一个最优解</span><span>空格 播放 / 暂停　← → 切换步骤</span><a href="../../posts/770953b4/">计算机工程中的最优化方法 ↗</a></footer>
+    <noscript><p>请启用 JavaScript 以播放动画。该例最优解为 x = 3.5，y = 1.5，z = 8.5。</p></noscript>
+  </main>
+</body>
+</html>
