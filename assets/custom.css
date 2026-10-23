@@ -567,3 +567,95 @@ html[data-leftbar-state='collapsed'] .site-shell:not([data-drawer='leftbar']) .i
               margin .28s cubic-bezier(.4, 0, .2, 1),
               padding .28s cubic-bezier(.4, 0, .2, 1);
 }
+
+/* ===========================================================================
+   中间文章卡片：轻微光泽与渐变
+   ---------------------------------------------------------------------------
+   1) 顶部一层很淡的白色渐变高光（模拟光从上方照下）
+   2) 悬停时一道斜向扫光掠过
+   两层都放在内容之下，不干扰文字可读性
+   =========================================================================== */
+
+.post-list .post-card {
+  position: relative;
+}
+
+/* 内容压在光泽之上 */
+.post-list .post-card > .md-text {
+  position: relative;
+  z-index: 1;
+}
+
+/* 顶部渐变高光 */
+.post-list .post-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, #fff 15%, transparent) 0%,
+    color-mix(in srgb, #fff 4%, transparent) 24%,
+    transparent 52%
+  );
+  z-index: 0;
+  transition: opacity .3s ease;
+}
+
+/* 悬停斜向扫光 */
+.post-list .post-card::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  bottom: -60%;
+  left: -35%;
+  width: 40%;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    color-mix(in srgb, #fff 20%, transparent) 50%,
+    transparent 100%
+  );
+  transform: translateX(-50%) rotate(8deg);
+  opacity: 0;
+  z-index: 0;
+  transition: opacity .3s ease, transform .75s cubic-bezier(.2, .6, .2, 1);
+}
+
+.post-list .post-card:hover::before {
+  opacity: 1;
+  transform: translateX(260%) rotate(8deg);
+}
+
+/* 深色模式下白色高光更克制 */
+:root[data-theme='dark'] .post-list .post-card::after {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, #fff 9%, transparent) 0%,
+    color-mix(in srgb, #fff 2.5%, transparent) 24%,
+    transparent 52%
+  );
+}
+
+:root[data-theme='dark'] .post-list .post-card::before {
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    color-mix(in srgb, #fff 12%, transparent) 50%,
+    transparent 100%
+  );
+}
+
+/* 跟随系统的深色模式 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .post-list .post-card::after {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, #fff 9%, transparent) 0%,
+      color-mix(in srgb, #fff 2.5%, transparent) 24%,
+      transparent 52%
+    );
+  }
+}
