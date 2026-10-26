@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="最优化方法的逐步交互演示：公式、图解与计算同步。">
+  <title>最优化方法 · 动画演示</title>
+  <link rel="icon" href="../simplex/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="player.css">
+  <script defer src="player.js"></script>
+</head>
+<body>
+  <main id="demo" aria-label="最优化方法交互动画">
+    <header><h1 id="demo-title">最优化方法</h1><span id="model"></span></header>
+    <div id="variants" class="variants" role="group" aria-label="选择演示方法"></div>
+    <div class="control-row"><div class="buttons"><button id="play" class="primary" aria-label="自动播放">▶ 自动播放</button><button id="prev" aria-label="上一步">←</button><button id="next" aria-label="下一步">→</button><button id="reset" aria-label="重新开始" class="reset">↺</button></div><div class="play-meta"><select id="speed" aria-label="播放速度"><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option><option value="0.5">0.5×</option></select><span id="step-count"></span></div></div>
+    <div id="timeline" class="timeline" role="group" aria-label="选择演示步骤"></div>
+    <div id="metrics" class="metrics"></div>
+    <div class="view-switch" role="group" aria-label="选择图解或计算"><button data-view="geometry" aria-pressed="true">图解</button><button data-view="algebra" aria-pressed="false">计算</button></div>
+    <section class="workspace">
+      <div class="panel geometry"><svg id="graphic" viewBox="0 0 520 320" role="img" aria-label="当前步骤的图解"></svg></div>
+      <div class="panel algebra"><p id="table-caption" class="caption"></p><div class="table-scroll"><table id="table" aria-label="当前步骤的计算表"></table></div><p id="note" class="note"></p></div>
+    </section>
+    <section class="explanation" aria-live="polite" aria-atomic="true"><h2 id="stage-title">正在载入演示…</h2><p id="description"></p><div id="formula" class="formula"></div></section>
+    <noscript>请启用 JavaScript 查看逐步动画；方法与公式见文章正文。</noscript>
+  </main>
+</body>
+</html>
