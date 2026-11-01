@@ -281,13 +281,6 @@
 
   
   <url>
-    <loc>http://lanc1oud.top/tags/Compile/</loc>
-    <lastmod>2026-11-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://lanc1oud.top/tags/BUAA-CO/</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -316,14 +309,14 @@
   </url>
   
   <url>
-    <loc>http://lanc1oud.top/tags/BUAA-OS/</loc>
+    <loc>http://lanc1oud.top/tags/Compile/</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://lanc1oud.top/tags/C-C/</loc>
+    <loc>http://lanc1oud.top/tags/BUAA-OS/</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -344,7 +337,7 @@
   </url>
   
   <url>
-    <loc>http://lanc1oud.top/tags/Stellar/</loc>
+    <loc>http://lanc1oud.top/tags/C-C/</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -352,6 +345,13 @@
   
   <url>
     <loc>http://lanc1oud.top/tags/HelloWorld/</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://lanc1oud.top/tags/Stellar/</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

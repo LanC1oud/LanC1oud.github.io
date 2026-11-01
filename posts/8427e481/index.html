@@ -42,7 +42,7 @@
 <meta property="og:locale" content="zh_CN" data-stellar-page-meta="">
 <meta property="article:author" content="LanC1oud" data-stellar-page-meta="">
 <meta property="article:published_time" content="2026-11-01T14:10:14.000Z" data-stellar-page-meta="">
-<meta property="article:modified_time" content="2026-11-01T14:31:27.000Z" data-stellar-page-meta="">
+<meta property="article:modified_time" content="2026-11-01T14:32:20.000Z" data-stellar-page-meta="">
 <meta property="article:tag" content="Compile" data-stellar-page-meta="">
 <meta name="twitter:card" content="summary" data-stellar-page-meta=""><meta name="twitter:title" content="BUAA-Compile 2026 期中考试题目及实现思路" data-stellar-page-meta="">
   
@@ -61,7 +61,7 @@
 
   
 
-  <script type="application/ld+json" data-stellar-page-meta="">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"LanC1oud","sameAs":[]},"dateCreated":"2026-11-01T22:10:14+08:00","dateModified":"2026-11-01T22:31:27+08:00","datePublished":"2026-11-01T22:10:14+08:00","description":"依据语法分析阶段代码，共两道增量开发题目，一道终结符修改，一道非终结符修改。\nMatch\n文法\n123PrimaryExp: '(' Exp ')' | LVal | Number | MatchExpMatchExp: \"match\" '(' Exp ')' '{' { MatchArm } '}' MatchArm: \"when\" Number \"-\u0026gt;\" Exp ';' | \"ot...","headline":"BUAA-Compile 2026 期中考试题目及实现思路","mainEntityOfPage":{"@type":"WebPage","@id":"http://lanc1oud.top/posts/8427e481/"},"publisher":{"@type":"Organization","name":"LanC1oud","sameAs":[]},"url":"http://lanc1oud.top/posts/8427e481/","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"],"keywords":"Compile","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"}</script>
+  <script type="application/ld+json" data-stellar-page-meta="">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"LanC1oud","sameAs":[]},"dateCreated":"2026-11-01T22:10:14+08:00","dateModified":"2026-11-01T22:32:20+08:00","datePublished":"2026-11-01T22:10:14+08:00","description":"依据语法分析阶段代码，共两道增量开发题目，一道终结符修改，一道非终结符修改。\nMatch\n文法\n123PrimaryExp: '(' Exp ')' | LVal | Number | MatchExpMatchExp: \"match\" '(' Exp ')' '{' { MatchArm } '}' MatchArm: \"when\" Number \"-\u0026gt;\" Exp ';' | \"ot...","headline":"BUAA-Compile 2026 期中考试题目及实现思路","mainEntityOfPage":{"@type":"WebPage","@id":"http://lanc1oud.top/posts/8427e481/"},"publisher":{"@type":"Organization","name":"LanC1oud","sameAs":[]},"url":"http://lanc1oud.top/posts/8427e481/","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"],"keywords":"Compile","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"}</script>
   <script src="/assets/bg-boot.js"></script>
 <link rel="stylesheet" href="/assets/custom.css">
 
@@ -407,8 +407,8 @@
     
     <div class="top bread-nav footnote"><div class="top-row"><div class="left" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a>
-</div><div class="right"><span class="cap reading">230 字 · 预计阅读 1 分钟</span></div></div><div class="meta-row">
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-11-01T14:10:14.000Z">2026-11-01</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-11-01T14:31:27.000Z">2026-11-01</time></span></div>
+</div><div class="right"><span class="cap reading">234 字 · 预计阅读 1 分钟</span></div></div><div class="meta-row">
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-11-01T14:10:14.000Z">2026-11-01</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-11-01T14:32:20.000Z">2026-11-01</time></span></div>
 </div></div>
     
     <div class="bottom only-title">
@@ -440,6 +440,7 @@
 3.<code>Parser</code>中参考<code>parseIfStmt()</code>新增<code>parseUnlessStmt()</code>,去除<code>elseStmt</code>部分即可。</p>
 <h2 id="错误处理">错误处理</h2>
 <p>仅涉及<code>i</code>,<code>j</code>类错误，在我的实现中已由<code>consume(TokenType type)</code>实现错误识别，故本次测试中不需改变错误处理。</p>
+<p>我的代码：</p>
 <div class="tag-plugin link dis-select"><a class="link-card plain card-hover card-hover--spotlight card-hover--tilt" title="" href="https://github.com/LanC1oud/BUAA_Compile" target="_blank" rel="external nofollow noopener noreferrer" cardlink="" autofill="title,icon,desc"><div class="left"><span class="title">https://github.com/LanC1oud/BUAA_Compile</span><span class="cap link footnote">https://github.com/LanC1oud/BUAA_Compile</span></div><div class="right"><div class="lazy img" data-bg="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/link/8f277b4ee0ecd.svg"></div></div></a></div></article>
 <div class="article-tags slide-up"><a class="tag" href="/tags/Compile/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>Compile</a></div>
 
