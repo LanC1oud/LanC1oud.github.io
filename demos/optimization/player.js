@@ -2,7 +2,14 @@
 (() => {
   const $ = id => document.getElementById(id);
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const sources = {'artificial':'linear-models.js','linear-models':'linear-models.js','lp-cases':'linear-models.js','duality':'duality.js','sensitivity':'duality.js','transport-model':'transport.js','transport-start':'transport.js','transport-optimize':'transport.js'};
+  const sources = {
+    'artificial':'linear-models.js','linear-models':'linear-models.js','lp-cases':'linear-models.js',
+    'duality':'duality.js','sensitivity':'duality.js',
+    'transport-model':'transport.js','transport-start':'transport.js','transport-optimize':'transport.js',
+    'goal-programming':'goal-programming.js',
+    'integer-bnb':'integer-search.js','integer-models':'integer-models.js',
+    'integer-tsp':'integer-tsp.js','integer-logic':'integer-models.js'
+  };
   const id = new URLSearchParams(location.search).get('demo') || 'duality';
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let spec, variant = 0, index = 0, playing = false, timer, animation;
